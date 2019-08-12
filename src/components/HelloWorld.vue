@@ -34,7 +34,9 @@ export default {
     return {
       publicKey: "",
       privateKey: "",
-      copyEnable: true
+      copyEnable: true,
+      clipboard: "",
+      clipboard1: ""
     };
   },
   methods: {
@@ -51,31 +53,36 @@ export default {
     initCodeCopy() {
       var _this = this;
       if (ClipboardJS.isSupported()) {
-        let clipboard = new ClipboardJS(".copy-public", {
+        if (this.clipboard && this.clipboard1) {
+          this.clipboard.destroy();
+          this.clipboard1.destroy();
+        }
+
+        this.clipboard = new ClipboardJS(".copy-public", {
           text: function() {
             return _this.publicKey;
           }
         });
 
-        let clipboard1 = new ClipboardJS(".copy-private", {
+        this.clipboard1 = new ClipboardJS(".copy-private", {
           text: function() {
             return _this.privateKey;
           }
         });
 
-        clipboard.on("success", e => {
+        this.clipboard.on("success", e => {
           alert(_this.$t("i18nView.copied"));
         });
 
-        clipboard.on("error", e => {
+        this.clipboard.on("error", e => {
           alert(_this.$t("i18nView.failed"));
         });
 
-        clipboard1.on("success", e => {
+        this.clipboard1.on("success", e => {
           alert(_this.$t("i18nView.copied"));
         });
 
-        clipboard1.on("error", e => {
+        this.clipboard1.on("error", e => {
           alert(_this.$t("i18nView.copied"));
         });
       } else {
