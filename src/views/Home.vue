@@ -1,8 +1,6 @@
 <template>
   <div class="home">
     <div class="logos">
-      <img class="logo" src="https://dapp.tokenpocket.pro/nervos-icon.png" />
-      <span>X</span>
       <img class="logo" src="../assets/logo.png" />
       <span class="lang-switch">
         <a v-if="this.$i18n.locale === 'zh'" @click="changeLang('en')" href="javascript:;">En</a>
