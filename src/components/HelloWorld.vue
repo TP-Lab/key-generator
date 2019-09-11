@@ -509,7 +509,7 @@ input {
 }
 
 .icon-btc {
-  background-image: url("http://static.binance.org/icon/57f62cb6866547259f0af704c360ae5c");
+  background-image: url("https://tp-statics.tokenpocket.pro/token/1568174455217-btc1.jpeg");
 }
 
 .icon-eth {
