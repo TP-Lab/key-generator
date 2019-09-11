@@ -254,6 +254,34 @@
             <button @click="genNervosKey()">{{$t('i18nView.gen')}}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-jingtum" title="Jingtum">
+          <i class="icon icon-jingtum"></i>
+          <div>
+            <h3>Jingtum keys</h3>
+            <p>
+              {{$t('i18nView.publicKey')}}:
+              <br />
+              <input readonly type="text" id="jingtum-public-key" :value="jingtumPublicKey" />
+              <button
+                data-clipboard-target="#jingtum-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >{{$t('i18nView.copy')}}</button>
+            </p>
+            <p>
+              {{$t('i18nView.privateKey')}}:
+              <br />
+              <input readonly type="text" id="jingtum-private-key" :value="jingtumPrivateKey" />
+              <button
+                data-clipboard-target="#jingtum-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >{{$t('i18nView.copy')}}</button>
+            </p>
+
+            <button @click="genJingtumKey()">{{$t('i18nView.gen')}}</button>
+          </div>
+        </v-tab>
       </vue-tabs>
     </div>
   </div>
@@ -261,6 +289,7 @@
 
 <script>
 import { ec as EC } from "elliptic";
+import { Wallet } from "jingtum-base-lib";
 import Address from "@nervosnetwork/ckb-sdk-address";
 import ClipboardJS from "clipboard";
 import ecc from "eosjs-ecc";
@@ -292,6 +321,8 @@ export default {
       cosmosPrivateKey: "",
       nervosPublicKey: "",
       nervosPrivateKey: "",
+      jingtumPublicKey: "",
+      jingtumPrivateKey: "",
       btcPublicKey: "",
       btcPrivateKey: "",
       // btcP2SHPrivateKey: "",
@@ -336,6 +367,7 @@ export default {
       this.genTronKey();
       this.genBinanceKey();
       this.genCosmosKey();
+      this.genJingtumKey();
     }, 1000);
   },
   methods: {
@@ -351,6 +383,11 @@ export default {
         this.binancePrivateKey,
         "bnb"
       );
+    },
+    genJingtumKey() {
+      let wallet = Wallet.generate();
+      this.jingtumPublicKey = wallet.address;
+      this.jingtumPrivateKey = wallet.secret;
     },
     genCosmosKey() {
       let account = this.crypto.create();
@@ -415,6 +452,10 @@ export default {
   color: red;
 }
 
+p {
+  line-height: 1.5;
+}
+
 input {
   width: 300px;
   height: 20px;
@@ -437,7 +478,7 @@ input {
 @media screen and (max-width: 768px) {
   .home {
     .vue-tabs .nav-tabs > li > a {
-      padding: 4px 6px;
+      padding: 8px;
       font-size: 12px;
     }
 
@@ -446,8 +487,8 @@ input {
     }
 
     .title i {
-      width: 12px;
-      height: 12px;
+      width: 16px;
+      height: 16px;
     }
   }
 }
@@ -482,15 +523,22 @@ input {
   background-image: url("https://dapp.tokenpocket.pro/nervos-icon.png");
 }
 
+.icon-jingtum {
+  background-image: url("https://dapp.mytokenpocket.vip/token-logo/SWTC.png");
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
 .hello {
-  .vue-tabs .nav-tabs > li {
-    float: none;
-    display: inline-block;
+  .vue-tabs {
+    margin-top: 20px;
+    .nav-tabs > li {
+      float: none;
+      display: inline-block;
+    }
   }
 }
 

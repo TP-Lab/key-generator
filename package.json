@@ -18,6 +18,7 @@
     "ethereumjs-util": "^6.1.0",
     "iost": "^0.1.19",
     "irisnet-crypto": "git+https://github.com/irisnet/irisnet-crypto.git",
+    "jingtum-base-lib": "^1.2.2",
     "lodash": "^4.17.15",
     "luxon": "^1.17.2",
     "tronweb": "^2.7.1",

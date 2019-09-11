@@ -29,6 +29,8 @@ let locale = _.includes(availableLocale, queryObj['locale']) ? queryObj['locale'
 
 locale = localStorage.getItem('locale') || locale;
 
+document.title = locale === 'en' ? 'Key Generator | TokenPocket' : '公私钥生成器 | TokenPocket';
+
 const i18n = new VueI18n({
     locale,
     messages: {

@@ -28,8 +28,10 @@ export default {
       localStorage.setItem("locale", lang);
       if (lang === "en") {
         Settings.defaultLocale = "en-US";
+        document.title = "Key Generator | TokenPocket";
       } else {
         Settings.defaultLocale = "zh-CN";
+        document.title = "公私钥生成器 | TokenPocket";
       }
     }
   }
