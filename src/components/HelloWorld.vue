@@ -6,10 +6,10 @@
       <p class="red">{{$t('i18nView.tips')}}</p>
 
       <vue-tabs>
-        <v-tab icon="icon-eos" title="EOS">
-          <i class="icon icon-eos"></i>
+        <v-tab icon="icon-eos" title="EOS / BOS">
+          <i class="icon icon-eos test"></i>
           <div>
-            <h3>EOS keys</h3>
+            <h3>EOS / BOS keys</h3>
             <p>
               {{$t('i18nView.publicKey')}}:
               <br />
@@ -34,10 +34,10 @@
             <button @click="genEosKey()">{{$t('i18nView.gen')}}</button>
           </div>
         </v-tab>
-        <v-tab icon="icon-eth" title="ETH">
+        <v-tab icon="icon-eth" title="ETH / MOAC">
           <i class="icon icon-eth"></i>
           <div>
-            <h3>ETH keys</h3>
+            <h3>ETH / MOAC keys</h3>
             <p>
               {{$t('i18nView.publicKey')}}:
               <br />
@@ -496,6 +496,11 @@ input {
 .icon-eos {
   background-image: url("https://tokenpocket.gz.bcebos.com/EOS_MAINNET.png");
 }
+
+.icon-bos {
+  background-image: url("https://tp-statics.cdn.bcebos.com/dapp/BOSclaimdapp.png");
+}
+
 .icon-binance {
   background-image: url("https://tp-statics.tokenpocket.pro/token/1564726829685-BIANdapp.png");
 }
@@ -514,6 +519,10 @@ input {
 
 .icon-eth {
   background-image: url("https://dapp.mytokenpocket.vip/token-logo/ETH.png");
+}
+
+.icon-moac {
+  background-image: url("http://tokenpocket.gz.bcebos.com/MOAC.png");
 }
 
 .icon-iost {
