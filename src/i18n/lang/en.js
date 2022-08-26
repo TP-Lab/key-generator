@@ -1,6 +1,7 @@
 const en = {
     i18nView: {
         title: 'Key Generator',
+        language:'English',
         intro: 'This tool is used to generate a set of key randomly. The generation process can be disconnected and offline.',
         tips: 'Please make sure to backup your PrivateKey.',
         publicKey: 'PublicKey / Address',

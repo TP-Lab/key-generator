@@ -3,10 +3,12 @@ import VueI18n from 'vue-i18n';
 import _ from 'lodash';
 import zh from './lang/zh';
 import en from './lang/en';
+import ko from './lang/ko';
+import ja from './lang/ja';
 
 Vue.use(VueI18n);
 
-const availableLocale = ['zh', 'en'];
+const availableLocale = ['zh', 'en', 'ko', 'ja'];
 
 let defaultLangStr = navigator.language;
 let defaultLang = 'zh';
@@ -29,13 +31,32 @@ let locale = _.includes(availableLocale, queryObj['locale']) ? queryObj['locale'
 
 locale = localStorage.getItem('locale') || locale;
 
-document.title = locale === 'en' ? 'Key Generator | TokenPocket' : '公私钥生成器 | TokenPocket';
+// document.title = locale === 'en' ? 'Key Generator | TokenPocket' : '公私钥生成器 | TokenPocket';
+
+switch (locale) {
+  case 'en':
+    document.title = 'Key Generator | TokenPocket'
+    break;
+  case 'zh':
+    document.title = '公私钥生成器 | TokenPocket'
+    break;
+  case 'ko':
+    document.title = '키 생성기 | TokenPocket'
+    break;
+  case 'ja':
+    document.title = 'キージェネレーター | TokenPocket'
+    break;
+  default:
+    break;
+}
 
 const i18n = new VueI18n({
     locale,
     messages: {
         'en': en,
-        'zh': zh
+        'zh': zh,
+        'ko': ko,
+        'ja': ja
     }
 });
 

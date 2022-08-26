@@ -18,9 +18,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #333;
-  padding: 20px;
+  padding: 20px 50px;
   overflow: hidden;
   word-break: break-word;
   white-space: normal;
+}
+@media screen and (max-width: 767px) {
+  #app {
+    padding: 20px 40px;
+  }
 }
 </style>
