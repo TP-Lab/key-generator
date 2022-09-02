@@ -11,7 +11,6 @@ body {
   padding: 0;
 }
 #app {
-  position: relative;
   min-height: calc(100vh - 20px);
   font-family: -apple-system, BlinkMacSystemFont, SF Pro SC, SF Pro Text,
     Helvetica Neue, Helvetica, PingFang SC, Segoe UI, Roboto, Hiragino Sans GB,

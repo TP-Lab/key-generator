@@ -504,6 +504,47 @@
             <button @click="genAptosKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-polkadot" title="Polkadot">
+          <i class="icon icon-polkadot"></i>
+          <div>
+            <h3>Polkadot keys</h3>
+            <p>
+              {{ $t('i18nView.publicKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="polkadot-public-key"
+                :value="polkadotPublicKey"
+              />
+              <button
+                data-clipboard-target="#polkadot-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="polkadot-private-key"
+                :value="polkadotPrivateKey"
+              />
+              <button
+                data-clipboard-target="#polkadot-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genPolkadotKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
       </vue-tabs>
     </div>
   </div>
@@ -524,6 +565,13 @@ import BncClient from '@binance-chain/javascript-sdk'
 import Irisnet from 'irisnet-crypto'
 import { Keypair } from '@solana/web3.js'
 import { AptosAccount } from 'aptos'
+import {
+  mnemonicGenerate,
+  mnemonicToMiniSecret,
+  cryptoWaitReady,
+} from '@polkadot/util-crypto'
+import Keyring from '@polkadot/keyring'
+import { u8aToHex } from '@polkadot/util'
 import bs58 from 'bs58'
 
 const ec = new EC('secp256k1')
@@ -532,6 +580,8 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      polkadotPublicKey: '',
+      polkadotPrivateKey: '',
       aptosPublicKey: '',
       aptosPrivateKey: '',
       solanaPublicKey: '',
@@ -599,11 +649,29 @@ export default {
       this.genJingtumKey()
       this.genSolanaKey()
       this.genAptosKey()
+      this.genPolkadotKey()
     }, 1000)
   },
   methods: {
+    async genPolkadotKey() {
+      // @polkadot/keyring @polkadot/util-crypto @polkadot/util
+      //生成12位的助记词
+      const mnemonic = mnemonicGenerate(12)
+      //私钥
+      const seed = mnemonicToMiniSecret(mnemonic)
+      this.polkadotPrivateKey = u8aToHex(seed)
+      //地址
+      await cryptoWaitReady()
+      const keyring = new Keyring({
+        ss58Format: '0',
+        type: 'sr25519',
+      })
+      const pair = keyring.addFromUri(mnemonic)
+      this.polkadotPublicKey = pair.address
+    },
     genAptosKey() {
       const account = new AptosAccount()
+      // console.log('account', account)
       this.aptosPublicKey = account.authKey().hexString
       this.aptosPrivateKey = account.toPrivateKeyObject().privateKeyHex
       // console.log('accountAddress', account.toPrivateKeyObject())
@@ -716,6 +784,7 @@ input {
   background-size: 100% 100%;
   background-position: center;
   margin-right: 4px;
+  border-radius: 50%;
 }
 @media screen and (max-width: 768px) {
   .home {
@@ -783,7 +852,11 @@ input {
 }
 
 .icon-aptos {
-  background-image: url('https://tp-statics.tokenpocket.pro/explorer/tokenpocket-1632796225175.png');
+  background-image: url('../assets/aptos.png');
+}
+
+.icon-polkadot {
+  background-image: url('https://tp-statics.tokenpocket.pro/token/tokenpocket-1654746047768.png');
 }
 
 h1 {
