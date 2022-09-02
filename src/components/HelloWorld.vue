@@ -419,8 +419,89 @@
                 {{ $t('i18nView.copy') }}
               </button>
             </p>
-
             <button @click="genJingtumKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
+        <v-tab icon="icon-solana" title="Solana">
+          <i class="icon icon-solana"></i>
+          <div>
+            <h3>Solana keys</h3>
+            <p>
+              {{ $t('i18nView.publicKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="solana-public-key"
+                :value="solanaPublicKey"
+              />
+              <button
+                data-clipboard-target="#solana-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="solana-private-key"
+                :value="solanaPrivateKey"
+              />
+              <button
+                data-clipboard-target="#solana-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genSolanaKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
+        <v-tab icon="icon-aptos" title="Aptos">
+          <i class="icon icon-aptos"></i>
+          <div>
+            <h3>Aptos keys</h3>
+            <p>
+              {{ $t('i18nView.publicKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="aptos-public-key"
+                :value="aptosPublicKey"
+              />
+              <button
+                data-clipboard-target="#aptos-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="aptos-private-key"
+                :value="aptosPrivateKey"
+              />
+              <button
+                data-clipboard-target="#aptos-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genAptosKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
       </vue-tabs>
@@ -441,6 +522,9 @@ import TronWeb from 'tronweb'
 import Web3 from 'web3'
 import BncClient from '@binance-chain/javascript-sdk'
 import Irisnet from 'irisnet-crypto'
+import { Keypair } from '@solana/web3.js'
+import { AptosAccount } from 'aptos'
+import bs58 from 'bs58'
 
 const ec = new EC('secp256k1')
 
@@ -448,6 +532,10 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      aptosPublicKey: '',
+      aptosPrivateKey: '',
+      solanaPublicKey: '',
+      solanaPrivateKey: '',
       eosPublicKey: '',
       eosPrivateKey: '',
       ethPublicKey: '',
@@ -509,9 +597,22 @@ export default {
       this.genBinanceKey()
       this.genCosmosKey()
       this.genJingtumKey()
+      this.genSolanaKey()
+      this.genAptosKey()
     }, 1000)
   },
   methods: {
+    genAptosKey() {
+      const account = new AptosAccount()
+      this.aptosPublicKey = account.authKey().hexString
+      this.aptosPrivateKey = account.toPrivateKeyObject().privateKeyHex
+      // console.log('accountAddress', account.toPrivateKeyObject())
+    },
+    genSolanaKey() {
+      const account = Keypair.generate()
+      this.solanaPublicKey = account.publicKey.toBase58()
+      this.solanaPrivateKey = bs58.encode(account.secretKey)
+    },
     genEosKey() {
       ecc.randomKey().then((privateKey) => {
         this.eosPrivateKey = privateKey
@@ -675,6 +776,14 @@ input {
 
 .icon-jingtum {
   background-image: url('https://dapp.mytokenpocket.vip/token-logo/SWTC.png');
+}
+
+.icon-solana {
+  background-image: url('https://tp-statics.tokenpocket.pro/explorer/tokenpocket-1632796225175.png');
+}
+
+.icon-aptos {
+  background-image: url('https://tp-statics.tokenpocket.pro/explorer/tokenpocket-1632796225175.png');
 }
 
 h1 {

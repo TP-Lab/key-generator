@@ -23,6 +23,10 @@
     </div>
 
     <HelloWorld />
+    <div class="github">
+      <img src="../assets/github.png" />
+      <span>Github</span>
+    </div>
   </div>
 </template>
 
@@ -41,6 +45,9 @@ export default {
       isTap: true,
     }
   },
+  // created() {
+  //   console.log(22222)
+  // },
   methods: {
     onShow() {
       this.isTap = false
@@ -125,14 +132,35 @@ export default {
   text-decoration: none;
   font-size: 16px;
 }
+.github {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 5px 0;
+  cursor: pointer;
+  img{
+    width: 28px;
+    height: 28px;
+  }
+  span{
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}
 @media screen and (max-width: 767px) {
-  .logo{
+  .logo {
     height: 28px;
   }
   .lang-switch {
     line-height: 28px;
     .lang-wrap {
-      .lang{
+      .lang {
         line-height: 30px;
       }
       &.show {

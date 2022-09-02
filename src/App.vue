@@ -11,6 +11,8 @@ body {
   padding: 0;
 }
 #app {
+  position: relative;
+  min-height: calc(100vh - 20px);
   font-family: -apple-system, BlinkMacSystemFont, SF Pro SC, SF Pro Text,
     Helvetica Neue, Helvetica, PingFang SC, Segoe UI, Roboto, Hiragino Sans GB,
     arial, microsoft yahei ui, Microsoft YaHei, SimSun, sans-serif;
@@ -18,14 +20,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #333;
-  padding: 20px 50px;
+  padding: 20px 50px 0;
   overflow: hidden;
   word-break: break-word;
   white-space: normal;
 }
 @media screen and (max-width: 767px) {
   #app {
-    padding: 20px 40px;
+    padding: 20px 40px 0;
   }
 }
 </style>

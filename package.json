@@ -9,8 +9,12 @@
   "dependencies": {
     "@binance-chain/javascript-sdk": "^2.15.0",
     "@nervosnetwork/ckb-sdk-address": "^0.18.0",
+    "@polkadot/extension-dapp": "^0.30.1",
+    "@solana/web3.js": "^1.50.1",
+    "aptos": "^0.0.20",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "bitcoinjs-lib": "^5.1.6",
+    "bs58": "^5.0.0",
     "clipboard": "^2.0.4",
     "core-js": "^2.6.5",
     "elliptic": "^6.5.0",
