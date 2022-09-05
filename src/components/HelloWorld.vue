@@ -545,6 +545,105 @@
             <button @click="genPolkadotKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-bch" title="BCH">
+          <i class="icon icon-bch"></i>
+          <div>
+            <h3>BCH keys</h3>
+            <p>
+              {{ $t('i18nView.publicKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="BCH-public-key"
+                :value="bchPublicKey"
+              />
+              <button
+                data-clipboard-target="#BCH-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="BCH-private-key"
+                :value="bchPrivateKey"
+              />
+              <button
+                data-clipboard-target="#BCH-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genBCHKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
+        <v-tab icon="icon-ltc" title="LTC">
+          <i class="icon icon-ltc"></i>
+          <div>
+            <h3>LTC keys</h3>
+            <p>
+              {{ $t('i18nView.normalAddr') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="ltc-public-key"
+                :value="ltcPublicKey"
+              />
+              <button
+                data-clipboard-target="#ltc-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              P2SH {{ $t('i18nView.address') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="ltcP2SH-public-key"
+                :value="ltcP2SHPublicKey"
+              />
+              <button
+                data-clipboard-target="#ltcP2SH-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="ltc-private-key"
+                :value="ltcPrivateKey"
+              />
+              <button
+                data-clipboard-target="#ltc-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genLTCKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
       </vue-tabs>
     </div>
   </div>
@@ -572,7 +671,18 @@ import {
 } from '@polkadot/util-crypto'
 import Keyring from '@polkadot/keyring'
 import { u8aToHex } from '@polkadot/util'
+import {
+  PrivateKey as LTCPrivateKey,
+  PublicKey as LTCPublicKey,
+  Address as LTCAddress,
+} from 'litecore-lib'
+import {
+  PrivateKey as BCHPrivateKey,
+  PublicKey as BCHPublicKey,
+  Address as BCHAddress,
+} from 'bitcore-lib-cash'
 import bs58 from 'bs58'
+import bs58check from 'bs58check'
 
 const ec = new EC('secp256k1')
 
@@ -580,6 +690,11 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      ltcPublicKey: '',
+      ltcP2SHPublicKey: '',
+      ltcPrivateKey: '',
+      bchPublicKey: '',
+      bchPrivateKey: '',
       polkadotPublicKey: '',
       polkadotPrivateKey: '',
       aptosPublicKey: '',
@@ -650,9 +765,72 @@ export default {
       this.genSolanaKey()
       this.genAptosKey()
       this.genPolkadotKey()
+      this.genLTCKey()
+      this.genBCHKey()
     }, 1000)
   },
   methods: {
+    genBCHKey() {
+      let privateKey = new BCHPrivateKey()
+      this.bchPrivateKey = privateKey.toWIF()
+      let publicKey = new BCHPublicKey(privateKey)
+      let address = new BCHAddress(publicKey)
+      this.bchPublicKey = address.toString().slice(12)
+    },
+    genLTCKey() {
+      let privateKey = new LTCPrivateKey()
+      this.ltcPrivateKey = privateKey.toWIF()
+      // console.log('privateKey', privateKey.toWIF())
+      let publicKey = new LTCPublicKey(privateKey)
+      // console.log('publicKey', publicKey)
+      let address = new LTCAddress(publicKey)
+      this.ltcPublicKey = address.toString()
+
+      let segwitP2SH = payments.p2sh({
+        redeem: payments.p2wpkh({
+          pubkey: publicKey.toDER(),
+        }),
+      })
+      const decoded = this.fromBase58Check(segwitP2SH.address)
+      let version = decoded['version']
+      switch (version) {
+        case 5:
+          version = 50
+          break
+        case 50:
+          version = 5
+          break
+        case 196:
+          version = 58
+          break
+        case 58:
+          version = 196
+          break
+        default:
+          throw 'unknown'
+      }
+      const p2shAddress = this.toBase58Check(decoded['hash'], version)
+      this.ltcP2SHPublicKey = p2shAddress
+      // console.log('p2sh', p2shAddress)
+    },
+
+    fromBase58Check(address) {
+      var payload = bs58check.decode(address)
+      if (payload.length < 21) throw new TypeError(address + ' is too short')
+      if (payload.length > 21) throw new TypeError(address + ' is too long')
+      var version = payload[0]
+      var hash = payload.slice(1)
+      return { hash: hash, version: version }
+    },
+
+    toBase58Check(hash, version) {
+      // typeforce(types.tuple(types.Hash160bit, types.UInt8), arguments)
+      var payload = new Buffer(21)
+      payload.writeUInt8(version, 0)
+      hash.copy(payload, 1)
+      return bs58check.encode(payload)
+    },
+
     async genPolkadotKey() {
       // @polkadot/keyring @polkadot/util-crypto @polkadot/util
       //生成12位的助记词
@@ -857,6 +1035,13 @@ input {
 
 .icon-polkadot {
   background-image: url('https://tp-statics.tokenpocket.pro/token/tokenpocket-1654746047768.png');
+}
+
+.icon-bch {
+  background-image: url('../assets/BCH.png');
+}
+.icon-ltc {
+  background-image: url('../assets/LTC.png');
 }
 
 h1 {

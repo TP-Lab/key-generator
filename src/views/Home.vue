@@ -143,8 +143,5 @@ export default {
       }
     }
   }
-  .github{
-    margin: 50px auto 20px;
-  }
 }
 </style>
