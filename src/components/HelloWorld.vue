@@ -644,6 +644,64 @@
             <button @click="genLTCKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-cfx" title="Conflux">
+          <i class="icon icon-cfx"></i>
+          <div>
+            <h3>Conflux keys</h3>
+            <p>
+              {{ $t('i18nView.normalAddr') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="cfx-public-key"
+                :value="cfxPublicKey"
+              />
+              <button
+                data-clipboard-target="#cfx-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              Conflux Mainnet {{ $t('i18nView.address') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="ltcP2SH-public-key"
+                :value="cfxMainnetPublicKey"
+              />
+              <button
+                data-clipboard-target="#ltcP2SH-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="cfx-private-key"
+                :value="cfxPrivateKey"
+              />
+              <button
+                data-clipboard-target="#cfx-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genConfluxKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
       </vue-tabs>
     </div>
   </div>
@@ -681,6 +739,7 @@ import {
   PublicKey as BCHPublicKey,
   Address as BCHAddress,
 } from 'bitcore-lib-cash'
+import { format } from 'js-conflux-sdk'
 import bs58 from 'bs58'
 import bs58check from 'bs58check'
 
@@ -690,6 +749,9 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      cfxMainnetPublicKey: '',
+      cfxPublicKey: '',
+      cfxPrivateKey: '',
       ltcPublicKey: '',
       ltcP2SHPublicKey: '',
       ltcPrivateKey: '',
@@ -767,9 +829,20 @@ export default {
       this.genPolkadotKey()
       this.genLTCKey()
       this.genBCHKey()
+      this.genConfluxKey()
     }, 1000)
   },
   methods: {
+    genConfluxKey() {
+      var account = this.web3.eth.accounts.create()
+      this.cfxPublicKey = account.address
+      this.cfxPrivateKey = account.privateKey
+      // let eth = CFXAddress.ethAddressToCfxAddress(account.address)
+      this.cfxMainnetPublicKey = format.address(
+        `0x1${account.address.toLowerCase().slice(3)}`,
+        1029
+      )
+    },
     genBCHKey() {
       let privateKey = new BCHPrivateKey()
       this.bchPrivateKey = privateKey.toWIF()
@@ -1042,6 +1115,9 @@ input {
 }
 .icon-ltc {
   background-image: url('../assets/LTC.png');
+}
+.icon-cfx {
+  background-image: url('https://tp-statics.tokenpocket.pro/token/tokenpocket-1649678694638.png');
 }
 
 h1 {

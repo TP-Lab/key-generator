@@ -29,6 +29,7 @@
     "iost": "^0.1.19",
     "irisnet-crypto": "git+https://github.com/irisnet/irisnet-crypto.git",
     "jingtum-base-lib": "^1.2.2",
+    "js-conflux-sdk": "^2.1.6",
     "litecore-lib": "^0.13.22",
     "lodash": "^4.17.15",
     "luxon": "^1.17.2",
