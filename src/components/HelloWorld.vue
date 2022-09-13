@@ -702,6 +702,47 @@
             <button @click="genConfluxKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-sui" title="Sui">
+          <i class="icon icon-sui"></i>
+          <div>
+            <h3>Sui keys</h3>
+            <p>
+              {{ $t('i18nView.publicKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="Sui-public-key"
+                :value="suiPublicKey"
+              />
+              <button
+                data-clipboard-target="#Sui-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="Sui-private-key"
+                :value="suiPrivateKey"
+              />
+              <button
+                data-clipboard-target="#Sui-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="genSuiKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
       </vue-tabs>
     </div>
   </div>
@@ -740,6 +781,7 @@ import {
   Address as BCHAddress,
 } from 'bitcore-lib-cash'
 import { format } from 'js-conflux-sdk'
+import { Ed25519Keypair } from '@mysten/sui.js'
 import bs58 from 'bs58'
 import bs58check from 'bs58check'
 
@@ -749,6 +791,8 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      suiPublicKey: '',
+      suiPrivateKey: '',
       cfxMainnetPublicKey: '',
       cfxPublicKey: '',
       cfxPrivateKey: '',
@@ -830,9 +874,15 @@ export default {
       this.genLTCKey()
       this.genBCHKey()
       this.genConfluxKey()
+      this.genSuiKey()
     }, 1000)
   },
   methods: {
+    genSuiKey() {
+      const keypair = new Ed25519Keypair()
+      this.suiPrivateKey = bs58.encode(keypair.keypair.secretKey)
+      this.suiPublicKey = '0x' + keypair.getPublicKey().toSuiAddress()
+    },
     genConfluxKey() {
       var account = this.web3.eth.accounts.create()
       this.cfxPublicKey = account.address
@@ -1118,6 +1168,9 @@ input {
 }
 .icon-cfx {
   background-image: url('https://tp-statics.tokenpocket.pro/token/tokenpocket-1649678694638.png');
+}
+.icon-sui {
+  background-image: url('../assets/sui.png');
 }
 
 h1 {
