@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@binance-chain/javascript-sdk": "^2.15.0",
-    "@mysten/sui.js": "^0.10.0",
     "@nervosnetwork/ckb-sdk-address": "^0.18.0",
     "@polkadot/extension-dapp": "^0.30.1",
     "@polkadot/keyring": "^5.1.1",
@@ -18,7 +17,6 @@
     "aptos": "^0.0.20",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "bitcoinjs-lib": "^5.1.6",
-    "bitcore-lib": "^8.25.36",
     "bitcore-lib-cash": "^8.25.36",
     "bs58": "^5.0.0",
     "bs58check": "^2.1.2",

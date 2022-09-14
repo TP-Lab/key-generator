@@ -591,7 +591,7 @@
           <div>
             <h3>LTC keys</h3>
             <p>
-              {{ $t('i18nView.normalAddr') }}
+              SegWit {{ $t('i18nView.address') }}
               <br />
               <input
                 readonly
@@ -608,7 +608,7 @@
               </button>
             </p>
             <p>
-              P2SH {{ $t('i18nView.address') }}
+              Legacy {{ $t('i18nView.address') }}
               <br />
               <input
                 readonly
@@ -671,11 +671,11 @@
               <input
                 readonly
                 type="text"
-                id="ltcP2SH-public-key"
+                id="cfxMainnet-public-key"
                 :value="cfxMainnetPublicKey"
               />
               <button
-                data-clipboard-target="#ltcP2SH-public-key"
+                data-clipboard-target="#cfxMainnet-public-key"
                 v-if="copyEnable"
                 class="copy-btn copy-public"
               >
@@ -702,7 +702,7 @@
             <button @click="genConfluxKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
-        <v-tab icon="icon-sui" title="Sui">
+        <!-- <v-tab icon="icon-sui" title="Sui">
           <i class="icon icon-sui"></i>
           <div>
             <h3>Sui keys</h3>
@@ -742,7 +742,7 @@
             </p>
             <button @click="genSuiKey()">{{ $t('i18nView.gen') }}</button>
           </div>
-        </v-tab>
+        </v-tab> -->
       </vue-tabs>
     </div>
   </div>
@@ -781,7 +781,7 @@ import {
   Address as BCHAddress,
 } from 'bitcore-lib-cash'
 import { format } from 'js-conflux-sdk'
-import { Ed25519Keypair } from '@mysten/sui.js'
+// import { Ed25519Keypair } from '@mysten/sui.js'
 import bs58 from 'bs58'
 import bs58check from 'bs58check'
 
@@ -874,15 +874,15 @@ export default {
       this.genLTCKey()
       this.genBCHKey()
       this.genConfluxKey()
-      this.genSuiKey()
+      // this.genSuiKey()
     }, 1000)
   },
   methods: {
-    genSuiKey() {
-      const keypair = new Ed25519Keypair()
-      this.suiPrivateKey = bs58.encode(keypair.keypair.secretKey)
-      this.suiPublicKey = '0x' + keypair.getPublicKey().toSuiAddress()
-    },
+    // genSuiKey() {
+    //   const keypair = new Ed25519Keypair()
+    //   this.suiPrivateKey = bs58.encode(keypair.keypair.secretKey)
+    //   this.suiPublicKey = '0x' + keypair.getPublicKey().toSuiAddress()
+    // },
     genConfluxKey() {
       var account = this.web3.eth.accounts.create()
       this.cfxPublicKey = account.address
@@ -916,21 +916,9 @@ export default {
       })
       const decoded = this.fromBase58Check(segwitP2SH.address)
       let version = decoded['version']
-      switch (version) {
-        case 5:
-          version = 50
-          break
-        case 50:
-          version = 5
-          break
-        case 196:
-          version = 58
-          break
-        case 58:
-          version = 196
-          break
-        default:
-          throw 'unknown'
+      // Mainnet p2sh address:
+      if (version === 5) {
+        version = 50
       }
       const p2shAddress = this.toBase58Check(decoded['hash'], version)
       this.ltcP2SHPublicKey = p2shAddress
