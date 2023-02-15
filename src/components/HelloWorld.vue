@@ -702,6 +702,81 @@
             <button @click="genConfluxKey()">{{ $t('i18nView.gen') }}</button>
           </div>
         </v-tab>
+        <v-tab icon="icon-nostr" title="Nostr">
+          <i class="icon icon-nostr"></i>
+          <div>
+            <h3>Nostr keys</h3>
+            <!-- <p>
+              Hex {{ $t('i18nView.address') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="cfx-public-key"
+                :value="nostrPublicKey"
+              />
+              <button
+                data-clipboard-target="#cfx-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="cfx-private-key"
+                :value="nostrPrivateKey"
+              />
+              <button
+                data-clipboard-target="#cfx-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p> -->
+            <p>
+              {{ $t('i18nView.address') }}
+              <br />
+              <input
+                readonly
+                type="text"
+                id="nostr-public-key"
+                :value="nostrPublicKey"
+              />
+              <button
+                data-clipboard-target="#nostr-public-key"
+                v-if="copyEnable"
+                class="copy-btn copy-public"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <p>
+              {{ $t('i18nView.privateKey') }}:
+              <br />
+              <input
+                readonly
+                type="text"
+                id="nostr-private-key"
+                :value="nostrPrivateKey"
+              />
+              <button
+                data-clipboard-target="#nostr-private-key"
+                v-if="copyEnable"
+                class="copy-btn copy-private"
+              >
+                {{ $t('i18nView.copy') }}
+              </button>
+            </p>
+            <button @click="getNostrKey()">{{ $t('i18nView.gen') }}</button>
+          </div>
+        </v-tab>
         <!-- <v-tab icon="icon-sui" title="Sui">
           <i class="icon icon-sui"></i>
           <div>
@@ -749,48 +824,58 @@
 </template>
 
 <script>
-import { ec as EC } from 'elliptic'
-import { Wallet } from 'jingtum-base-lib'
-import Address from '@nervosnetwork/ckb-sdk-address'
-import ClipboardJS from 'clipboard'
-import ecc from 'eosjs-ecc'
-import { ECPair, payments } from 'bitcoinjs-lib'
-import iost from 'iost'
-import { setTimeout } from 'timers'
-import TronWeb from 'tronweb'
-import Web3 from 'web3'
-import BncClient from '@binance-chain/javascript-sdk'
-import Irisnet from 'irisnet-crypto'
-import { Keypair } from '@solana/web3.js'
-import { AptosAccount } from 'aptos'
+import { ec as EC } from 'elliptic';
+import { Wallet } from 'jingtum-base-lib';
+import Address from '@nervosnetwork/ckb-sdk-address';
+import ClipboardJS from 'clipboard';
+import ecc from 'eosjs-ecc';
+import { ECPair, payments, address as bjsAddress } from 'bitcoinjs-lib';
+import iost from 'iost';
+import { setTimeout } from 'timers';
+import TronWeb from 'tronweb';
+import Web3 from 'web3';
+import BncClient from '@binance-chain/javascript-sdk';
+import Irisnet from 'irisnet-crypto';
+import { Keypair } from '@solana/web3.js';
+import { AptosAccount } from 'aptos';
 import {
   mnemonicGenerate,
   mnemonicToMiniSecret,
   cryptoWaitReady,
-} from '@polkadot/util-crypto'
-import Keyring from '@polkadot/keyring'
-import { u8aToHex } from '@polkadot/util'
+} from '@polkadot/util-crypto';
+import Keyring from '@polkadot/keyring';
+import { u8aToHex } from '@polkadot/util';
 import {
   PrivateKey as LTCPrivateKey,
   PublicKey as LTCPublicKey,
   Address as LTCAddress,
-} from 'litecore-lib'
+} from 'litecore-lib';
 import {
   PrivateKey as BCHPrivateKey,
   PublicKey as BCHPublicKey,
   Address as BCHAddress,
-} from 'bitcore-lib-cash'
-import { format } from 'js-conflux-sdk'
-// import { Ed25519Keypair } from '@mysten/sui.js'
-import bs58 from 'bs58'
-import bs58check from 'bs58check'
+} from 'bitcore-lib-cash';
+import { format } from 'js-conflux-sdk';
+import { Ed25519Keypair } from '@mysten/sui.js';
+import bs58 from 'bs58';
+import bs58check from 'bs58check';
+import { generatePrivateKey, getPublicKey } from 'nostr-tools';
+// import * as nostr from 'nostr-tools'
+import * as secp256k1 from '@noble/secp256k1';
+import { bech32 } from '@scure/base';
 
-const ec = new EC('secp256k1')
+const Bech32MaxSize = 5000;
+
+const ec = new EC('secp256k1');
 
 export default {
   name: 'HelloWorld',
   data() {
     return {
+      nostrHexPublicKey: '',
+      nostrHexPrivateKey: '',
+      nostrPublicKey: '',
+      nostrPrivateKey: '',
       suiPublicKey: '',
       suiPrivateKey: '',
       cfxMainnetPublicKey: '',
@@ -836,214 +921,244 @@ export default {
       web3: '',
       BncClient: '',
       crypto: '',
-    }
+    };
   },
   created() {
+    // console.log('bjs',bjsAddress);
     this.tronWeb = new TronWeb({
       fullHost: 'https://api.trongrid.io',
       privateKey: '',
-    })
+    });
 
     this.web3 = new Web3(
       new Web3.providers.HttpProvider('https://eth49he73m.jccdex.cn')
-    )
+    );
 
-    this.BncClient = BncClient
+    this.BncClient = BncClient;
 
-    this.crypto = Irisnet.getCrypto('cosmos')
+    this.crypto = Irisnet.getCrypto('cosmos');
   },
   mounted() {
-    var clipboards = new ClipboardJS('.copy-btn')
+    var clipboards = new ClipboardJS('.copy-btn');
     clipboards.on('success', (e) => {
-      alert(this.$t('i18nView.copied'))
-    })
+      alert(this.$t('i18nView.copied'));
+    });
 
     setTimeout(() => {
-      this.genEosKey()
-      this.genEthKey()
-      this.genIostKey()
-      this.genBtcKey()
-      this.genNervosKey()
-      this.genTronKey()
-      this.genBinanceKey()
-      this.genCosmosKey()
-      this.genJingtumKey()
-      this.genSolanaKey()
-      this.genAptosKey()
-      this.genPolkadotKey()
-      this.genLTCKey()
-      this.genBCHKey()
-      this.genConfluxKey()
+      this.genEosKey();
+      this.genEthKey();
+      this.genIostKey();
+      this.genBtcKey();
+      this.genNervosKey();
+      this.genTronKey();
+      this.genBinanceKey();
+      this.genCosmosKey();
+      this.genJingtumKey();
+      this.genSolanaKey();
+      this.genAptosKey();
+      this.genPolkadotKey();
+      this.genLTCKey();
+      this.genBCHKey();
+      this.genConfluxKey();
       // this.genSuiKey()
-    }, 1000)
+      this.getNostrKey();
+    }, 1000);
   },
   methods: {
-    // genSuiKey() {
-    //   const keypair = new Ed25519Keypair()
-    //   this.suiPrivateKey = bs58.encode(keypair.keypair.secretKey)
-    //   this.suiPublicKey = '0x' + keypair.getPublicKey().toSuiAddress()
-    // },
+    getNostrKey() {
+      let sk = generatePrivateKey(); // `sk` is a hex string
+      let pk = getPublicKey(sk); // `pk` is a hex string
+      this.nostrHexPrivateKey = sk;
+      this.nostrHexPublicKey = pk;
+      this.nostrPrivateKey = this.nsecEncode(sk);
+      this.nostrPublicKey = this.npubEncode(pk);
+      // console.log('nostr-PrivateKey', sk);
+      // console.log('nostr-PublicKey', pk);
+      // console.log('nsec-PrivateKey', this.nsecEncode(sk));
+      // console.log('npub-PublicKey', this.npubEncode(pk));
+    },
+
+    nsecEncode(hex) {
+      return this.encodeBytes('nsec', hex);
+    },
+
+    npubEncode(hex) {
+      return this.encodeBytes('npub', hex);
+    },
+
+    encodeBytes(prefix, hex) {
+      let data = secp256k1.utils.hexToBytes(hex);
+      let words = bech32.toWords(data);
+      return bech32.encode(prefix, words, Bech32MaxSize);
+    },
+
+    genSuiKey() {
+      const keypair = new Ed25519Keypair();
+      this.suiPrivateKey = bs58.encode(keypair.keypair.secretKey);
+      this.suiPublicKey = '0x' + keypair.getPublicKey().toSuiAddress();
+    },
     genConfluxKey() {
-      var account = this.web3.eth.accounts.create()
-      this.cfxPublicKey = account.address
-      this.cfxPrivateKey = account.privateKey
+      var account = this.web3.eth.accounts.create();
+      this.cfxPublicKey = account.address;
+      this.cfxPrivateKey = account.privateKey;
       // let eth = CFXAddress.ethAddressToCfxAddress(account.address)
       this.cfxMainnetPublicKey = format.address(
         `0x1${account.address.toLowerCase().slice(3)}`,
         1029
-      )
+      );
     },
     genBCHKey() {
-      let privateKey = new BCHPrivateKey()
-      this.bchPrivateKey = privateKey.toWIF()
-      let publicKey = new BCHPublicKey(privateKey)
-      let address = new BCHAddress(publicKey)
-      this.bchPublicKey = address.toString().slice(12)
+      let privateKey = new BCHPrivateKey();
+      this.bchPrivateKey = privateKey.toWIF();
+      let publicKey = new BCHPublicKey(privateKey);
+      let address = new BCHAddress(publicKey);
+      this.bchPublicKey = address.toString().slice(12);
     },
     genLTCKey() {
-      let privateKey = new LTCPrivateKey()
-      this.ltcPrivateKey = privateKey.toWIF()
+      let privateKey = new LTCPrivateKey();
+      this.ltcPrivateKey = privateKey.toWIF();
       // console.log('privateKey', privateKey.toWIF())
-      let publicKey = new LTCPublicKey(privateKey)
+      let publicKey = new LTCPublicKey(privateKey);
       // console.log('publicKey', publicKey)
-      let address = new LTCAddress(publicKey)
-      this.ltcPublicKey = address.toString()
+      let address = new LTCAddress(publicKey);
+      this.ltcPublicKey = address.toString();
 
       let segwitP2SH = payments.p2sh({
         redeem: payments.p2wpkh({
           pubkey: publicKey.toDER(),
         }),
-      })
-      const decoded = this.fromBase58Check(segwitP2SH.address)
-      let version = decoded['version']
+      });
+      // const decoded = this.fromBase58Check(segwitP2SH.address)
+      const decoded = bjsAddress.fromBase58Check(segwitP2SH.address);
+      let version = decoded['version'];
       // Mainnet p2sh address:
       if (version === 5) {
-        version = 50
+        version = 50;
       }
-      const p2shAddress = this.toBase58Check(decoded['hash'], version)
-      this.ltcP2SHPublicKey = p2shAddress
+      const p2shAddress = bjsAddress.toBase58Check(decoded['hash'], version);
+      this.ltcP2SHPublicKey = p2shAddress;
       // console.log('p2sh', p2shAddress)
     },
 
     fromBase58Check(address) {
-      var payload = bs58check.decode(address)
-      if (payload.length < 21) throw new TypeError(address + ' is too short')
-      if (payload.length > 21) throw new TypeError(address + ' is too long')
-      var version = payload[0]
-      var hash = payload.slice(1)
-      return { hash: hash, version: version }
+      var payload = bs58check.decode(address);
+      if (payload.length < 21) throw new TypeError(address + ' is too short');
+      if (payload.length > 21) throw new TypeError(address + ' is too long');
+      var version = payload[0];
+      var hash = payload.slice(1);
+      return { hash: hash, version: version };
     },
 
     toBase58Check(hash, version) {
       // typeforce(types.tuple(types.Hash160bit, types.UInt8), arguments)
-      var payload = new Buffer(21)
-      payload.writeUInt8(version, 0)
-      hash.copy(payload, 1)
-      return bs58check.encode(payload)
+      var payload = new Buffer(21);
+      payload.writeUInt8(version, 0);
+      hash.copy(payload, 1);
+      return bs58check.encode(payload);
     },
 
     async genPolkadotKey() {
       // @polkadot/keyring @polkadot/util-crypto @polkadot/util
       //生成12位的助记词
-      const mnemonic = mnemonicGenerate(12)
+      const mnemonic = mnemonicGenerate(12);
       //私钥
-      const seed = mnemonicToMiniSecret(mnemonic)
-      this.polkadotPrivateKey = u8aToHex(seed)
+      const seed = mnemonicToMiniSecret(mnemonic);
+      this.polkadotPrivateKey = u8aToHex(seed);
       //地址
-      await cryptoWaitReady()
+      await cryptoWaitReady();
       const keyring = new Keyring({
         ss58Format: '0',
         type: 'sr25519',
-      })
-      const pair = keyring.addFromUri(mnemonic)
-      this.polkadotPublicKey = pair.address
+      });
+      const pair = keyring.addFromUri(mnemonic);
+      this.polkadotPublicKey = pair.address;
     },
     genAptosKey() {
-      const account = new AptosAccount()
+      const account = new AptosAccount();
       // console.log('account', account)
-      this.aptosPublicKey = account.authKey().hexString
-      this.aptosPrivateKey = account.toPrivateKeyObject().privateKeyHex
+      this.aptosPublicKey = account.authKey().hexString;
+      this.aptosPrivateKey = account.toPrivateKeyObject().privateKeyHex;
       // console.log('accountAddress', account.toPrivateKeyObject())
     },
     genSolanaKey() {
-      const account = Keypair.generate()
-      this.solanaPublicKey = account.publicKey.toBase58()
-      this.solanaPrivateKey = bs58.encode(account.secretKey)
+      const account = Keypair.generate();
+      this.solanaPublicKey = account.publicKey.toBase58();
+      this.solanaPrivateKey = bs58.encode(account.secretKey);
     },
     genEosKey() {
       ecc.randomKey().then((privateKey) => {
-        this.eosPrivateKey = privateKey
-        this.eosPublicKey = ecc.privateToPublic(privateKey)
-      })
+        this.eosPrivateKey = privateKey;
+        this.eosPublicKey = ecc.privateToPublic(privateKey);
+      });
     },
     genBinanceKey() {
-      this.binancePrivateKey = BncClient.crypto.generatePrivateKey()
+      this.binancePrivateKey = BncClient.crypto.generatePrivateKey();
       this.binancePublicKey = BncClient.crypto.getAddressFromPrivateKey(
         this.binancePrivateKey,
         'bnb'
-      )
+      );
     },
     genJingtumKey() {
-      let wallet = Wallet.generate()
-      this.jingtumPublicKey = wallet.address
-      this.jingtumPrivateKey = wallet.secret
+      let wallet = Wallet.generate();
+      this.jingtumPublicKey = wallet.address;
+      this.jingtumPrivateKey = wallet.secret;
     },
     genCosmosKey() {
-      let account = this.crypto.create()
-      this.cosmosPublicKey = account.address
-      this.cosmosPrivateKey = account.privateKey
+      let account = this.crypto.create();
+      this.cosmosPublicKey = account.address;
+      this.cosmosPrivateKey = account.privateKey;
     },
     genEthKey() {
-      var account = this.web3.eth.accounts.create()
-      this.ethPublicKey = account.address
-      this.ethPrivateKey = account.privateKey
+      var account = this.web3.eth.accounts.create();
+      this.ethPublicKey = account.address;
+      this.ethPrivateKey = account.privateKey;
     },
     genTronKey() {
       this.tronWeb.createAccount().then((res) => {
-        this.tronPublicKey = res.address.base58
-        this.tronPrivateKey = res.privateKey
-      })
+        this.tronPublicKey = res.address.base58;
+        this.tronPrivateKey = res.privateKey;
+      });
     },
     genIostKey() {
-      var kp = IOST.KeyPair.newKeyPair()
-      this.iostPrivateKey = kp.B58SecKey()
-      this.iostPublicKey = kp.B58PubKey()
+      var kp = IOST.KeyPair.newKeyPair();
+      this.iostPrivateKey = kp.B58SecKey();
+      this.iostPublicKey = kp.B58PubKey();
     },
     genBtcKey() {
-      var keyPair = ECPair.makeRandom()
+      var keyPair = ECPair.makeRandom();
 
-      this.btcPrivateKey = keyPair.toWIF()
+      this.btcPrivateKey = keyPair.toWIF();
 
       var { address } = payments.p2pkh({
         pubkey: keyPair.publicKey,
-      })
+      });
 
-      this.btcPublicKey = address
+      this.btcPublicKey = address;
 
       var segwit = payments.p2wpkh({
         pubkey: keyPair.publicKey,
-      })
+      });
 
-      this.btcSegwitPublicKey = segwit.address
+      this.btcSegwitPublicKey = segwit.address;
 
       var segwitP2SH = payments.p2sh({
         redeem: payments.p2wpkh({
           pubkey: keyPair.publicKey,
         }),
-      })
+      });
 
-      this.btcP2SHPublicKey = segwitP2SH.address
+      this.btcP2SHPublicKey = segwitP2SH.address;
     },
 
     genNervosKey() {
-      let privateKey = ec.genKeyPair().priv
-      let address = new Address(privateKey, { prefix: 'ckb' })
+      let privateKey = ec.genKeyPair().priv;
+      let address = new Address(privateKey, { prefix: 'ckb' });
 
-      this.nervosPrivateKey = '0x' + address.getPrivateKey()
-      this.nervosPublicKey = address.value
+      this.nervosPrivateKey = '0x' + address.getPrivateKey();
+      this.nervosPublicKey = address.value;
     },
   },
-}
+};
 </script>
 
 <style lang="less">
@@ -1129,7 +1244,7 @@ input {
   background-image: url('https://tp-statics.cdn.bcebos.com/dapp/1551934888429-IOSTlogo.png');
 }
 .icon-nervos {
-  background-image: url('https://dapp.tokenpocket.pro/nervos-icon.png');
+  background-image: url('../assets/nervos-icon.png');
 }
 
 .icon-jingtum {
@@ -1156,6 +1271,9 @@ input {
 }
 .icon-cfx {
   background-image: url('https://tp-statics.tokenpocket.pro/token/tokenpocket-1649678694638.png');
+}
+.icon-nostr {
+  background-image: url('../assets/nostr.jpg');
 }
 .icon-sui {
   background-image: url('../assets/sui.png');

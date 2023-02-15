@@ -5,6 +5,8 @@ module.exports = {
     open: true,
     port: 12306,
   },
+  // 配置编译 node_modules下的 nostr-tools 包
+  transpileDependencies: ['nostr-tools'],
   configureWebpack: {
     module: {
       rules: [
@@ -15,5 +17,5 @@ module.exports = {
         },
       ],
     },
-  },
-}
+  }
+};
