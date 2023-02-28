@@ -4,29 +4,23 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="scss">
 html,
 body {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
 #app {
   min-height: calc(100vh - 20px);
-  font-family: -apple-system, BlinkMacSystemFont, SF Pro SC, SF Pro Text,
-    Helvetica Neue, Helvetica, PingFang SC, Segoe UI, Roboto, Hiragino Sans GB,
-    arial, microsoft yahei ui, Microsoft YaHei, SimSun, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #333;
-  padding: 20px 50px 0;
-  overflow: hidden;
-  word-break: break-word;
-  white-space: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 @media screen and (max-width: 767px) {
-  #app {
-    padding: 20px 40px 0;
-  }
+  // #app {
+  //   padding: 20px 40px 0;
+  // }
 }
 </style>
