@@ -10,7 +10,7 @@
           <div class="address">{{ $t('main.githubUrl') }}</div>
           <a
             class="github"
-            href="https://github.com/tokenbankteam/key-generator"
+            href="https://github.com/TP-Lab/key-generator"
             target="_blank"
           >
             <div class="left">
