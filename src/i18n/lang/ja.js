@@ -1,11 +1,110 @@
-const ja = {
-  i18nView: {
+
+export default {
+  product: {
+    title: '製品',
+    selfCustodyWallet: 'モバイルウォレット',
+    selfCustodyWalletDesc: 'ブロックチェーンの暗号資産&DeFiモバイルウォレット',
+    hardwareWallet: 'ハードウェアウォレット',
+    hardwareWalletDesc: 'あなたの資産を守る、KeyPalをゲットしよう。',
+    extensionWallet: '拡張ウォレット',
+    extensionWalletDesc: 'デスクトップでより良いウォレットを。',
+    transit: 'Transit',
+    transitDesc: 'マルチチェーンのDEXアグリゲーター&NFTマーケットプレイス',
+    fiveDegrees: '5Degrees',
+    fiveDegreesDesc: 'Web3.0のソーシャルネットワークプロトコル',
+  },
+  project: {
+    subDApp: 'DAppを投稿',
+    subToken: 'トークンを投稿',
+    subNFT: 'NFTを投稿',
+    subChain: 'チェーン',
+  },
+  assets: {
+    title: 'アセット',
+  },
+  collaborations: {
+    title: 'コラボレーション',
+  },
+  community: {
+    title: 'コミュニティ',
+    developers: '開発者',
+    recruiting: 'TPマン(採用)',
+  },
+  helpCenter: {
+    title: 'ヘルプセンター',
+  },
+  features: {
+    title: 'プロダクト',
+    buyCrypto: '暗号資産を購入',
+    mobileWallet: 'モバイルウォレット',
+    hardwareWallet: 'ハードウェアウォレット',
+    extensionWallet: '拡張ウォレット',
+    desktop: 'デスクトップウォレット',
+    fiveDegrees: '5Degrees',
+    approvalDetector: 'アプルーバルディテクター',
+    tokenSecurity: 'トークンセキュリティ',
+    keyGenerator: 'キージェネレーター',
+    BATCH_SENDER: 'バッチセンダー',
+  },
+  information: {
+    title: '詳細',
+    blockchainGuide: 'ブロックチェーンガイド',
+    tronWallet: 'TRON Guide',
+    iostWallet: 'IOST Guide',
+    tpMan: 'TPマン',
+  },
+  developers: {
+    title: '開発者',
+    github: 'Github (TP-Lab)',
+    devCenter: '開発者センター',
+    subToken: 'トークンを投稿',
+    subDApp: 'DAppを投稿',
+    subNFT: 'NFTを投稿',
+  },
+  company: {
+    title: '会社',
+    about: 'TokenPocketについて',
+    careers: 'キャリア',
+    pressKit: 'プレスキット',
+    swagShop: 'スワッグショップ',
+  },
+  support: {
+    title: 'サポート',
+    helpCenter: 'ヘルプセンター',
+    contactUs: 'お問い合わせ',
+  },
+  legal: {
+    title: '法的情報',
+    privacyPolicy: 'プライバシーポリシー',
+    terms: '利用規約',
+  },
+  chain: {
+    btc: 'BTC',
+    ethereum: 'ETH / EVMs',
+    eos: 'EOS',
+    iost: 'IOST',
+    tron: 'TRON',
+    cosmos: 'COSMOS',
+    binance: 'Binance',
+    nervos: 'Nervos',
+    jingtum: 'Jingtum',
+    solana: 'Solana',
+    aptos: 'Aptos',
+    polkadot: 'Polkadot',
+    bch: 'BCH',
+    ltc: 'LTC',
+    conflux: 'Conflux',
+    nostr: 'Nostr',
+  },
+  main: {
     title: 'キーージェネレーター',
     language: '日本語',
     intro:
-      'このツールは秘密鍵と公開鍵/アドレスのセットをランダムに生成することができます。インターネットから切断してオフライン環境で生成できます。',
-    tips: '秘密鍵は必ずバックアップしてください。',
-    publicKey: '公開鍵 / アドレス',
+      'このツールは、各ネットワークの公開鍵と秘密鍵をランダムに生成するために使用されます. 生成プロセスはネットワークから切断してオフラインにすることができます. ジェネレーターのコードはオープンソース化されています. 確認して検証することができます.',
+    tips:
+      '公開鍵と秘密鍵を生成するには、ネットワークから切断することをお勧めします。生成後は、必ず秘密鍵情報を記録して保管してください。秘密鍵情報は、誰にも開示したり開示したりしないでください。！',
+    githubUrl: 'オープンソースアドレス',
+    publicKey: 'アドレス / 公開鍵',
     privateKey: '秘密鍵(プライベートキー)',
     gen: '生成する',
     copy: 'コピー',
@@ -14,7 +113,13 @@ const ja = {
     normalAddr: 'ノーマルアドレス',
     segwitAddr: 'セグウィットアドレス',
     address: 'アドレス',
+    changeChain: '最下層を切り替える',
   },
-}
-
-export default ja
+  follow: {
+    title: 'フォローする',
+    desc1: 'TokenPocket スタッフからプライベート メッセージは送信されません!',
+    desc2:
+      '注意！ TokenPocket コミュニティに参加しようとしています。誰かが私たちになりすましてプライベート メッセージを送信している可能性があります。 プライベート メッセージを送信する人は詐欺師である可能性があることに注意してください。 最初に連絡することはありません！',
+    desc3: '了解、入力'
+  },
+};
