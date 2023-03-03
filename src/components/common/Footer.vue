@@ -516,7 +516,7 @@ export default {
 @media screen and (max-width: 1200px) {
   .footer {
     .content {
-      padding: 80px 20px 164px;
+      padding: 80px 28px 164px;
       flex-direction: column;
       .footer-wrap {
         margin-left: 0;

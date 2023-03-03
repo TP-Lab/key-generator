@@ -133,11 +133,9 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: -webkit-fill-available;
-          height: -moz-available;
+          height: inherit;
           flex: 1;
           margin-left: 50px;
-          padding: 24px 0 16px;
 
           .mobile-chain {
             @include box-btn();
@@ -145,6 +143,7 @@
           }
 
           .title {
+            margin-top: 20px;
             font-size: 32px;
             font-weight: 600;
             color: #3a3b3d;
@@ -164,6 +163,7 @@
           }
 
           .generate-btn {
+            margin-bottom: 15px;
             background: #2980fe;
             border-radius: 12px;
             padding: 17px 0;
@@ -179,6 +179,40 @@
 
   .change-chain {
     display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .home {
+    main {
+      .container {
+        margin: 0 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home {
+    main {
+      .container {
+        flex-direction: column;
+        margin: 0 28px;
+
+        .main-left {
+          width: 100%;
+          .github {
+            .arrow {
+              margin-left: 260px;
+            }
+          }
+        }
+
+        .main-right {
+          margin: 50px 0 0 0;
+        }
+      }
+    }
   }
 }
 
@@ -217,6 +251,7 @@
 
         .main-left {
           width: 100%;
+          margin: 0;
 
           .left-img {
             width: 146px;
@@ -242,7 +277,7 @@
         }
 
         .main-right {
-          margin-left: 0;
+          margin: 0;
           padding: 20px;
           margin-top: 20px;
           border-radius: 12px;
@@ -255,6 +290,7 @@
           .key-content {
             margin-left: 0;
             padding: 0;
+            height: auto;
 
             .mobile-chain {
               @include box-btn();
@@ -340,12 +376,15 @@
           &::-webkit-scrollbar {
             display: none;
           }
+
           .mobile-chain-item {
             display: flex;
             align-items: center;
-            &:nth-child(n+2){
+
+            &:nth-child(n+2) {
               margin-top: 23px;
             }
+
             img {
               width: 24px;
               border-radius: 50%;

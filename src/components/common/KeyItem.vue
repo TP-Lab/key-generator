@@ -62,6 +62,17 @@ export default {
     }
   }
 }
+
+@media screen and(max-width:1200px) {
+  .key-item {
+    .key-wrap {
+      span {
+        width: 100%;
+      }
+    }
+  }
+}
+
 @media screen and(max-width:767px) {
   .key-item {
     .key-name {
