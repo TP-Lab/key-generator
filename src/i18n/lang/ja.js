@@ -81,6 +81,7 @@ export default {
   chain: {
     btc: 'BTC',
     ethereum: 'ETH / EVMs',
+    dogecoin: 'Dogecoin',
     eos: 'EOS',
     iost: 'IOST',
     tron: 'TRON',

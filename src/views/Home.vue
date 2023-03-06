@@ -65,6 +65,16 @@
                     :value="eosPrivateKey"
                   />
                 </div>
+                <div class="dogecoin" v-show="network === 'DOGE'">
+                  <KeyItem
+                    :title="$t('main.publicKey')"
+                    :value="dogePublicKey"
+                  />
+                  <KeyItem
+                    :title="$t('main.privateKey')"
+                    :value="dogePrivateKey"
+                  />
+                </div>
                 <div class="iost" v-show="network === 'IOST'">
                   <KeyItem
                     :title="$t('main.publicKey')"
@@ -260,7 +270,7 @@ import { Wallet } from 'jingtum-base-lib';
 import Address from '@nervosnetwork/ckb-sdk-address';
 import ClipboardJS from 'clipboard';
 import ecc from 'eosjs-ecc';
-import { ECPair, payments, address as bjsAddress } from 'bitcoinjs-lib';
+import { ECPair, payments, address as bjsAddress, bip32 } from 'bitcoinjs-lib';
 import iost from 'iost';
 import { setTimeout } from 'timers';
 import TronWeb from 'tronweb';
@@ -292,6 +302,7 @@ import bs58 from 'bs58';
 import { generatePrivateKey, getPublicKey } from 'nostr-tools';
 import * as secp256k1 from '@noble/secp256k1';
 import { bech32 } from '@scure/base';
+import { generateMnemonic, mnemonicToSeed } from 'bip39';
 
 const Bech32MaxSize = 5000;
 
@@ -310,6 +321,8 @@ export default {
   },
   data() {
     return {
+      dogePublicKey: '',
+      dogePrivateKey: '',
       nostrHexPublicKey: '',
       nostrHexPrivateKey: '',
       nostrPublicKey: '',
@@ -399,6 +412,11 @@ export default {
           network: 'CFX',
           icon: require('../assets/main/conflux.png'),
           name: this.$t('chain.conflux'),
+        },
+        {
+          network: 'DOGE',
+          icon: require('../assets/main/dogecoin.png'),
+          name: this.$t('chain.dogecoin'),
         },
         {
           network: 'EOS',
@@ -518,9 +536,34 @@ export default {
       this.genConfluxKey();
       // this.genSuiKey()
       this.genNostrKey();
+      this.genDogeKey();
     }, 1000);
   },
   methods: {
+    async genDogeKey() {
+      const DOGE_NETWORK = {
+        messagePrefix: '\x19Dogecoin Signed Message:\n',
+        bip32: {
+          public: 0x02facafd,
+          private: 0x02fac398,
+        },
+        pubKeyHash: 0x1e,
+        scripthash: 0x16,
+        wif: 0x9e,
+      };
+      const doge_path = "m/44'/3'/0'/0/0";
+      const mnemonic = generateMnemonic();
+      const seed = await mnemonicToSeed(mnemonic);
+      const doge_master = bip32.fromSeed(seed, DOGE_NETWORK);
+      const doge_keypair = doge_master.derivePath(doge_path);
+      const doge_data = payments.p2pkh({
+        pubkey: doge_keypair.publicKey,
+        network: DOGE_NETWORK,
+      });
+      this.dogePublicKey = doge_data.address;
+      this.dogePrivateKey = doge_keypair.toWIF();
+    },
+
     genNostrKey() {
       let sk = generatePrivateKey(); // `sk` is a hex string
       let pk = getPublicKey(sk); // `pk` is a hex string
@@ -704,6 +747,9 @@ export default {
           break;
         case 'EOS':
           this.genEosKey();
+          break;
+        case 'DOGE':
+          this.genDogeKey();
           break;
         case 'IOST':
           this.genIostKey();

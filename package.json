@@ -19,6 +19,7 @@
     "@solana/web3.js": "^1.50.1",
     "aptos": "^0.0.20",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "bip39": "^3.1.0",
     "bitcoinjs-lib": "^5.1.6",
     "bitcore-lib-cash": "^8.25.36",
     "bs58": "^5.0.0",
