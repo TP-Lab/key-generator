@@ -34,7 +34,6 @@
     "js-conflux-sdk": "^2.1.6",
     "litecore-lib": "^0.13.22",
     "lodash": "^4.17.15",
-    "node-polyfill-webpack-plugin": "^2.0.1",
     "nostr-tools": "^0.24.1",
     "tronweb": "^2.7.1",
     "vue": "^3.2.13",
@@ -57,10 +56,10 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
-    "node-sass": "^4.14.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "node-sass": "^6.0.1",
     "prettier": "^2.4.1",
-    "sass": "^1.32.7",
-    "sass-loader": "^7.3.1"
+    "sass-loader": "^10.4.1"
   },
   "eslintConfig": {
     "root": true,
