@@ -1,0 +1,417 @@
+.home {
+  @mixin box-btn {
+    margin-top: 16px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    cursor: pointer;
+
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 32px;
+      }
+
+      span {
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000000;
+      }
+    }
+
+    .arrow {
+      margin-left: 185px;
+      width: 14px;
+    }
+  }
+
+  main {
+    background: #f2f2f2;
+    padding: 135px 0 100px;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .main-left {
+        width: 350px;
+
+        .left-img {
+          width: 188px;
+        }
+
+        .title {
+          margin-top: 25px;
+          font-size: 44px;
+          font-weight: 600;
+          color: #3a3b3d;
+        }
+
+        .desc {
+          margin-top: 16px;
+          font-size: 16px;
+          color: #828282;
+        }
+
+        .address {
+          margin-top: 48px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #3a3b3d;
+        }
+
+        .github {
+          @include box-btn();
+        }
+      }
+
+      .main-right {
+        display: flex;
+        align-items: center;
+        padding: 16px 48px 16px 16px;
+        flex: 1;
+        margin-left: 140px;
+        height: 664px;
+        background: #ffffff;
+        border-radius: 24px;
+
+        .chain-list {
+          background: #292929;
+          border-radius: 16px;
+          height: inherit;
+          overflow-y: auto;
+          padding: 16px 16px;
+          box-sizing: border-box;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .chain-item {
+            display: flex;
+            align-items: center;
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+
+            &.active {
+              background: #fff;
+
+              span {
+                color: #292929;
+              }
+            }
+
+            img {
+              width: 24px;
+              border-radius: 50%;
+            }
+
+            span {
+              margin-left: 10px;
+              font-size: 14px;
+              font-weight: 500;
+              color: #ffffff;
+            }
+          }
+        }
+
+        .key-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: inherit;
+          flex: 1;
+          margin-left: 50px;
+
+          .mobile-chain {
+            @include box-btn();
+            display: none;
+          }
+
+          .title {
+            margin-top: 20px;
+            font-size: 32px;
+            font-weight: 600;
+            color: #3a3b3d;
+          }
+
+          .warn {
+            margin-top: 24px;
+            background: #ffecec;
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #F56459;
+            font-size: 14px;
+          }
+
+          .key-list {
+            margin-top: 24px;
+            .key-box {
+              height: 350px;
+              overflow: auto;
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+
+              &::-webkit-scrollbar {
+                display: none;
+              }
+              .key-item:nth-child(n+2) {
+                margin-top: 24px;
+              }
+            }
+          }
+
+          .generate-btn {
+            margin-bottom: 15px;
+            background: #2980fe;
+            border-radius: 12px;
+            padding: 17px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .change-chain {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .home {
+    main {
+      .container {
+        margin: 0 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home {
+    main {
+      .container {
+        flex-direction: column;
+        margin: 0 28px;
+
+        .main-left {
+          width: 100%;
+          .github {
+            .arrow {
+              margin-left: 260px;
+            }
+          }
+        }
+
+        .main-right {
+          margin: 50px 0 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home {
+    @mixin box-btn {
+      margin-top: 12px;
+      width: auto;
+      border-radius: 14px;
+      padding: 16px 20px;
+      justify-content: space-between;
+      cursor: none;
+
+      .left {
+        img {
+          width: 28px;
+        }
+
+        span {
+          font-size: 15px;
+        }
+      }
+
+      .arrow {
+        margin-left: 0;
+        width: 12px;
+      }
+    }
+
+    main {
+      padding: 136px 0 62px;
+
+      .container {
+        flex-direction: column;
+        margin: 0 28px;
+
+        .main-left {
+          width: 100%;
+          margin: 0;
+
+          .left-img {
+            width: 146px;
+          }
+
+          .title {
+            font-size: 36px;
+          }
+
+          .desc {
+            margin-top: 14px;
+            font-size: 14px;
+          }
+
+          .address {
+            margin-top: 26px;
+            font-size: 15px;
+          }
+
+          .github {
+            @include box-btn();
+          }
+        }
+
+        .main-right {
+          margin: 0;
+          padding: 20px;
+          margin-top: 20px;
+          border-radius: 12px;
+          height: auto;
+
+          .chain-list {
+            display: none;
+          }
+
+          .key-content {
+            margin-left: 0;
+            padding: 0;
+            height: auto;
+
+            .mobile-chain {
+              @include box-btn();
+              display: flex;
+              border: 1px solid #E6E8EA;
+              margin-bottom: 16px;
+              margin-top: 0;
+            }
+
+            .title {
+              font-size: 20px;
+            }
+
+            .warn {
+              border-radius: 6px;
+              font-size: 12px;
+              padding: 12px;
+            }
+
+            .key-list {
+              margin-top: 16px;
+            }
+
+            .generate-btn {
+              margin-top: 32px;
+              padding: 12px 0;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    .change-chain {
+      display: block;
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .container {
+        width: 80%;
+        background: #fcfcfd;
+        border-radius: 19px;
+        box-shadow: 0px 122.03px 122.03px -91.52px rgba(31, 47, 70, 0.12);
+        padding: 16px 24px;
+
+        .title-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          span {
+            font-size: 17px;
+            font-weight: 600;
+            color: #3a3b3d;
+          }
+
+          img {
+            width: 28px;
+          }
+        }
+
+        .line {
+          margin: 12px 0 15px;
+          height: 1px;
+          background: #e6e8ec;
+        }
+
+        .mobile-chain-list {
+          height: 60vh;
+          overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .mobile-chain-item {
+            display: flex;
+            align-items: center;
+
+            &:nth-child(n+2) {
+              margin-top: 23px;
+            }
+
+            img {
+              width: 24px;
+              border-radius: 50%;
+            }
+
+            span {
+              margin-left: 5px;
+              font-size: 15px;
+              font-weight: 500;
+              color: #3a3b3d;
+            }
+          }
+        }
+      }
+    }
+  }
+}

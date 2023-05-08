@@ -1,0 +1,86 @@
+{
+  "name": "key-generator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@binance-chain/javascript-sdk": "^2.15.0",
+    "@mysten/sui.js": "^0.33.0",
+    "@nervosnetwork/ckb-sdk-address": "^0.18.0",
+    "@noble/secp256k1": "^1.7.1",
+    "@polkadot/extension-dapp": "^0.30.1",
+    "@polkadot/keyring": "^12.1.2",
+    "@polkadot/util": "^12.1.2",
+    "@polkadot/util-crypto": "^12.1.2",
+    "@scure/base": "^1.1.1",
+    "@solana/web3.js": "^1.50.1",
+    "aptos": "^1.8.5",
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "bitcoinjs-lib": "^6.1.0",
+    "bitcore-lib-cash": "^8.25.36",
+    "bs58": "^5.0.0",
+    "core-js": "^3.8.3",
+    "elliptic": "^6.5.0",
+    "eosjs-ecc": "^4.0.4",
+    "ethereumjs-util": "^6.1.0",
+    "iost": "^0.1.19",
+    "irisnet-crypto": "^1.3.4",
+    "jingtum-base-lib": "^1.2.2",
+    "js-conflux-sdk": "^2.1.6",
+    "litecore-lib": "^0.13.22",
+    "lodash": "^4.17.15",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "nostr-tools": "^0.24.1",
+    "tronweb": "^2.7.1",
+    "vue": "^3.2.13",
+    "vue-clipboard2": "^0.3.3",
+    "vue-i18n": "^9.3.0-beta.17",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0",
+    "web3": "^1.2.1",
+    "web3-eth": "^1.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.4.1",
+    "sass": "^1.32.7",
+    "sass-loader": "^7.3.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
