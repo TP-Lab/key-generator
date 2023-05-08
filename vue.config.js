@@ -1,8 +1,8 @@
 const { defineConfig } = require("@vue/cli-service");
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 module.exports = defineConfig({
-  // publicPath: '/',
-  publicPath: '/key-generator',
+  publicPath: '/',
+  // publicPath: '/key-generator',
   devServer: {
     open: true,
     port: 12306,
