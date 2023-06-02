@@ -10,11 +10,6 @@
           />
         </div>
         <div class="menu-status text-right">
-          <!-- <span
-            class="mini-navbar-language"
-            @click="changeLanguage"
-          >{{language === 'zh' ? 'En' : '中文'}}</span>-->
-          <!-- <i :class="!menuState ? 'icon-menu' : 'icon-close'" @click="changeMenuState"></i> -->
           <img
             src="../../assets/menu.png"
             v-if="!menuState"
@@ -40,7 +35,6 @@
           @click.stop="navGo(item, index, $event)"
         >
           <div class="mini-menu-title">
-            <!-- 一级菜单 -->
             <div class="menu-item">
               <div>{{ item.title }}</div>
               <div class="text-right" v-if="item.children">
@@ -57,7 +51,6 @@
               </div>
             </div>
 
-            <!-- 子菜单 -->
             <div
               class="mini-menu-children"
               v-if="item.children && navIndex === index"

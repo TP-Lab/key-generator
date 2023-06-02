@@ -12,6 +12,8 @@ export default {
     transitDesc: '多链聚合、跨链工具及NFT市场',
     fiveDegrees: '5Degrees',
     fiveDegreesDesc: 'Web3.0上的社交网络协议',
+    stakeVault: '质押宝',
+    stakeVaultDesc: '支持自托管质押节点和小额灵活质押节点'
   },
   project: {
     subDApp: '提交DApp',

@@ -11,6 +11,8 @@ export default {
     transitDesc: 'Multi-chain DEX Aggregator and NFT Marketplace Platform.',
     fiveDegrees: '5Degrees',
     fiveDegreesDesc: 'Social Network Protocol in Web3.0.',
+    stakeVault: 'ETH Staking Vault',
+    stakeVaultDesc: 'Support Both Self-Custodial Staking and Small Amount Staking'
   },
   project: {
     subDApp: 'Submit DApp',

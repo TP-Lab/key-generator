@@ -160,5 +160,20 @@ export default {
         return 'https://help.tpwallet.io/en/contact-us/Joinus';
       }
     },
+    stakeVaultUrl() {
+      if (this.isTokenPocketPro) {
+        if (this.$i18n.locale === 'zh') {
+          return 'https://dapp.tokenpocket.pro/StakeVault/index.html?locale=zh#/'
+        } else {
+          return 'https://dapp.tokenpocket.pro/StakeVault/index.html?locale=en#/'
+        }
+      } else {
+        if (this.$i18n.locale === 'zh') {
+          return 'https://dapp.tptool.pro/StakeVault/index.html?locale=zh#/'
+        } else {
+          return 'https://dapp.tptool.pro/StakeVault/index.html?locale=en#/'
+        }
+      }
+    },
   },
 };

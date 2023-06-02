@@ -32,7 +32,6 @@
     "irisnet-crypto": "^1.3.4",
     "jingtum-base-lib": "^1.2.2",
     "js-conflux-sdk": "^2.1.6",
-    "litecore-lib": "^0.13.22",
     "lodash": "^4.17.15",
     "nostr-tools": "^0.24.1",
     "tronweb": "^2.7.1",

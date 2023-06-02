@@ -12,6 +12,8 @@ export default {
     transitDesc: '멀티체인 DEX 애그리게이터 및 NFT 마켓플레이스 플랫폼',
     fiveDegrees: '5Degrees',
     fiveDegreesDesc: 'Web3.0의 소셜 네트워크 프로토콜',
+    stakeVault: 'ETH Staking Vault',
+    stakeVaultDesc: '자체 보관 스테이킹과 소액 스테이킹을 모두 지원합니다'
   },
   project: {
     subDApp: 'DApp 체출하기',

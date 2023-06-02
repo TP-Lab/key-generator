@@ -150,6 +150,10 @@ export default {
               url: 'https://www.5degrees.io/',
             },
             {
+              title: this.$t('product.stakeVault'),
+              url: this.stakeVaultUrl
+            },
+            {
               title: this.$t('features.approvalDetector'),
               url: this.approvalUrl,
             },
@@ -157,10 +161,6 @@ export default {
               title: this.$t('features.tokenSecurity'),
               url: this.tokenSecurityUrl,
             },
-            // {
-            //   title: this.$t('features.keyGenerator'),
-            //   url: this.keyUrl,
-            // },
             {
               title: this.$t('features.BATCH_SENDER'),
               url: this.batchSenderUrl,
@@ -307,44 +307,6 @@ export default {
       }
       window.open(item.url);
     },
-
-    subscribeEmail() {
-      const isEmail = new RegExp(
-        /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-      );
-      if (!isEmail.test(this.email)) {
-        const emailMsg =
-          this.language === 'zh' ? '请输入正确的邮箱地址' : 'Error Email!';
-        this.$message.error(emailMsg);
-        return false;
-      }
-
-      if (process.client) {
-        let url =
-          window.origin ||
-          window.location.protocol +
-            '//' +
-            window.location.hostname +
-            (window.location.port ? ':' + window.location.port : '');
-        this.$axios
-          .post(`${url}/api/tokenPocket/subscribe`, {
-            email: this.email,
-          })
-          .then((res) => {
-            if (res.data.result === 0) {
-              const message =
-                this.language === 'zh' ? '订阅成功' : 'Subscribe sucess';
-              this.email = '';
-              this.$message.success(message);
-            } else {
-              this.$message.error(res.data.message);
-            }
-          })
-          .catch((error) => {
-            this.$message.error(error);
-          });
-      }
-    },
   },
 };
 </script>
@@ -450,8 +412,6 @@ export default {
     border: 0;
     color: #101010;
     width: 160px;
-    // height: 32px;
-    // flex: 1;
     height: 100%;
     margin: 0 0 0 10px;
     &::-webkit-input-placeholder {
@@ -481,7 +441,6 @@ export default {
     background: #2980fe;
     position: relative;
     border-radius: 0 4px 4px 0;
-    // padding: 0 15px 0 10px;
   }
 }
 
@@ -531,7 +490,6 @@ export default {
   }
 }
 
-// 移动端
 @media screen and (max-width: 768px) {
   @for $i from 1 through 8 {
     .footer-follow-#{$i} {
@@ -612,10 +570,6 @@ export default {
   .footer-link a {
     margin-bottom: 0;
   }
-
-  // .footer-list {
-  // text-align: center;
-  // }
 
   .footer-email {
     input {

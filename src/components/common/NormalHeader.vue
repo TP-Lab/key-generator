@@ -74,7 +74,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <div :class="{ line: navChildren.line }"></div> -->
             </a>
           </div>
         </a>
@@ -93,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@for $i from 1 through 11 {
+@for $i from 1 through 12 {
   .navbar-tab-list {
     .nav-children-wrap {
       a {

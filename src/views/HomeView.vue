@@ -46,53 +46,53 @@
               <div class="warn">{{ $t('main.tips') }}</div>
               <div class="key-list">
                 <div class="key-box ethereum" v-show="network === 'ETH'">
-                  <KeyItem :title="$t('main.publicKey')" :value="ethPublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="ethAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="ethPrivateKey"
                   />
                 </div>
                 <div class="key-box eos" v-show="network === 'EOS'">
-                  <KeyItem :title="$t('main.publicKey')" :value="eosPublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="eosAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="eosPrivateKey"
                   />
                 </div>
                 <div class="key-box dogecoin" v-show="network === 'DOGE'">
-                  <KeyItem :title="$t('main.publicKey')" :value="dogePublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="dogeAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="dogePrivateKey"
                   />
                 </div>
                 <div class="key-box iost" v-show="network === 'IOST'">
-                  <KeyItem :title="$t('main.publicKey')" :value="iostPublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="iostAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="iostPrivateKey"
                   />
                 </div>
                 <div class="key-box tron" v-show="network === 'TRX'">
-                  <KeyItem :title="$t('main.publicKey')" :value="tronPublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="tronAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="tronPrivateKey"
                   />
                 </div>
                 <div class="key-box btc" v-show="network === 'BTC'">
-                  <KeyItem :title="$t('main.normalAddr')" :value="btcPublicKey" />
+                  <KeyItem :title="$t('main.normalAddr')" :value="btcAddress" />
                   <KeyItem
                     :title="'P2SH ' + $t('main.address')"
-                    :value="btcP2SHPublicKey"
+                    :value="btcP2SHAddress"
                   />
                   <KeyItem
                     :title="'P2WPK ' + $t('main.address')"
-                    :value="btcSegwitPublicKey"
+                    :value="btcSegwitAddress"
                   />
                   <KeyItem
                     :title="'Taproot ' + $t('main.address')"
-                    :value="btcTaprootPublicKey"
+                    :value="btcTaprootAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -102,7 +102,7 @@
                 <div class="key-box cosmos" v-show="network === 'ATOM'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="cosmosPublicKey"
+                    :value="cosmosAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -112,7 +112,7 @@
                 <div class="key-box binance" v-show="network === 'BNB'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="binancePublicKey"
+                    :value="binanceAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -122,7 +122,7 @@
                 <div class="key-box nervos" v-show="network === 'CKB'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="nervosPublicKey"
+                    :value="nervosAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -132,7 +132,7 @@
                 <div class="key-box jingtum" v-show="network === 'JMB'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="jingtumPublicKey"
+                    :value="jingtumAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -142,7 +142,7 @@
                 <div class="key-box solana" v-show="network === 'SOL'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="solanaPublicKey"
+                    :value="solanaAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -152,7 +152,7 @@
                 <div class="key-box aptos" v-show="network === 'APT'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="aptosPublicKey"
+                    :value="aptosAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -162,7 +162,7 @@
                 <div class="key-box polkadot" v-show="network === 'DOT'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="polkadotPublicKey"
+                    :value="polkadotAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -170,7 +170,7 @@
                   />
                 </div>
                 <div class="key-box bch" v-show="network === 'BCH'">
-                  <KeyItem :title="$t('main.publicKey')" :value="bchPublicKey" />
+                  <KeyItem :title="$t('main.publicKey')" :value="bchAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="bchPrivateKey"
@@ -179,11 +179,15 @@
                 <div class="key-box ltc" v-show="network === 'LTC'">
                   <KeyItem
                     :title="'SegWit ' + $t('main.address')"
-                    :value="ltcPublicKey"
+                    :value="ltcAddress"
                   />
                   <KeyItem
                     :title="'Legacy ' + $t('main.address')"
-                    :value="ltcP2SHPublicKey"
+                    :value="ltcP2SHAddress"
+                  />
+                  <KeyItem
+                    :title="'Native SegWit ' + $t('main.address')"
+                    :value="ltcNativeSegwitAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -191,10 +195,10 @@
                   />
                 </div>
                 <div class="key-box cfx" v-show="network === 'CFX'">
-                  <KeyItem :title="$t('main.normalAddr')" :value="cfxPublicKey" />
+                  <KeyItem :title="$t('main.normalAddr')" :value="cfxAddress" />
                   <KeyItem
                     :title="'Conflux Mainnet ' + $t('main.address')"
-                    :value="cfxMainnetPublicKey"
+                    :value="cfxMainnetAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -204,7 +208,7 @@
                 <div class="key-box nostr" v-show="network === 'NOSTR'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="nostrPublicKey"
+                    :value="nostrAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -214,7 +218,7 @@
                 <div class="key-box sui" v-show="network === 'SUI'">
                   <KeyItem
                     :title="$t('main.publicKey')"
-                    :value="suiPublicKey"
+                    :value="suiAddress"
                   />
                   <KeyItem
                     :title="$t('main.privateKey')"
@@ -255,13 +259,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import { ec as EC } from 'elliptic';
 import { Wallet } from 'jingtum-base-lib';
 import Address from '@nervosnetwork/ckb-sdk-address';
-// import ClipboardJS from 'clipboard';
 import ecc from 'eosjs-ecc';
-// import { ECPair, payments, address as bjsAddress, bip32 } from 'bitcoinjs-lib';
 import iost from 'iost';
 import TronWeb from 'tronweb';
 import Web3 from 'web3';
@@ -276,11 +277,6 @@ import {
 } from '@polkadot/util-crypto';
 import Keyring from '@polkadot/keyring';
 import { u8aToHex } from '@polkadot/util';
-import {
-  PrivateKey as LTCPrivateKey,
-  PublicKey as LTCPublicKey,
-  Address as LTCAddress,
-} from 'litecore-lib';
 import {
   PrivateKey as BCHPrivateKey,
   PublicKey as BCHPublicKey,
@@ -314,49 +310,48 @@ export default {
   components: { Header, Footer, KeyItem },
   data() {
     return {
-      dogePublicKey: '',
+      dogeAddress: '',
       dogePrivateKey: '',
-      nostrHexPublicKey: '',
-      nostrHexPrivateKey: '',
-      nostrPublicKey: '',
+      nostrAddress: '',
       nostrPrivateKey: '',
-      suiPublicKey: '',
+      suiAddress: '',
       suiPrivateKey: '',
-      cfxMainnetPublicKey: '',
-      cfxPublicKey: '',
+      cfxMainnetAddress: '',
+      cfxAddress: '',
       cfxPrivateKey: '',
-      ltcPublicKey: '',
-      ltcP2SHPublicKey: '',
+      ltcAddress: '',
+      ltcP2SHAddress: '',
+      ltcNativeSegwitAddress: '',
       ltcPrivateKey: '',
-      bchPublicKey: '',
+      bchAddress: '',
       bchPrivateKey: '',
-      polkadotPublicKey: '',
+      polkadotAddress: '',
       polkadotPrivateKey: '',
-      aptosPublicKey: '',
+      aptosAddress: '',
       aptosPrivateKey: '',
-      solanaPublicKey: '',
+      solanaAddress: '',
       solanaPrivateKey: '',
-      eosPublicKey: '',
+      eosAddress: '',
       eosPrivateKey: '',
-      ethPublicKey: '',
+      ethAddress: '',
       ethPrivateKey: '',
-      iostPublicKey: '',
+      iostAddress: '',
       iostPrivateKey: '',
-      tronPublicKey: '',
+      tronAddress: '',
       tronPrivateKey: '',
-      binancePublicKey: '',
+      binanceAddress: '',
       binancePrivateKey: '',
-      cosmosPublicKey: '',
+      cosmosAddress: '',
       cosmosPrivateKey: '',
-      nervosPublicKey: '',
+      nervosAddress: '',
       nervosPrivateKey: '',
-      jingtumPublicKey: '',
+      jingtumAddress: '',
       jingtumPrivateKey: '',
-      btcPublicKey: '',
+      btcAddress: '',
       btcPrivateKey: '',
-      btcP2SHPublicKey: '',
-      btcSegwitPublicKey: '',
-      btcTaprootPublicKey: '',
+      btcP2SHAddress: '',
+      btcSegwitAddress: '',
+      btcTaprootAddress: '',
       copyEnable: true,
       clipboard: '',
       clipboard1: '',
@@ -515,8 +510,6 @@ export default {
   },
 
   mounted() {
-    // console.log('bitcoin', bitcoin);
-    // console.log('bip32Obj', bip32Obj);
     setTimeout(() => {
       this.genEosKey();
       this.genEthKey();
@@ -553,24 +546,21 @@ export default {
       const doge_path = "m/44'/3'/0'/0/0";
       const mnemonic = generateMnemonic();
       const seed = await mnemonicToSeed(mnemonic);
-      // const doge_master = bip32.fromSeed(seed, DOGE_NETWORK);
       const doge_master = bip32Obj.fromSeed(seed, DOGE_NETWORK);
       const doge_keypair = doge_master.derivePath(doge_path);
       const doge_data = bitcoin.payments.p2pkh({
         pubkey: doge_keypair.publicKey,
         network: DOGE_NETWORK,
       });
-      this.dogePublicKey = doge_data.address;
+      this.dogeAddress = doge_data.address;
       this.dogePrivateKey = doge_keypair.toWIF();
     },
 
     genNostrKey() {
       let sk = generatePrivateKey(); // `sk` is a hex string
       let pk = getPublicKey(sk); // `pk` is a hex string
-      this.nostrHexPrivateKey = sk;
-      this.nostrHexPublicKey = pk;
       this.nostrPrivateKey = this.nsecEncode(sk);
-      this.nostrPublicKey = this.npubEncode(pk);
+      this.nostrAddress = this.npubEncode(pk);
     },
 
     nsecEncode(hex) {
@@ -588,26 +578,16 @@ export default {
     },
 
     genSuiKey() {
-      // console.log('sui', sui);
       const keypair = new Ed25519Keypair();
-      // console.log('keypair',keypair);
-      this.suiPublicKey = keypair.getPublicKey().toSuiAddress();
-      // this.suiPrivateKey = Array.from(
-      //   keypair.keypair.secretKey.slice(0, 32),
-      //   (byte) => {
-      //     return ('0' + byte.toString(16)).slice(-2);
-      //   }
-      // ).join('');
+      this.suiAddress = keypair.getPublicKey().toSuiAddress();
       this.suiPrivateKey = toHEX(keypair.keypair.secretKey.slice(0, 32))
-      // console.log('suiPublicKey', this.suiPublicKey);
-      // console.log('suiPrivateKey', this.suiPrivateKey);
     },
 
     genConfluxKey() {
       var account = this.web3.eth.accounts.create();
-      this.cfxPublicKey = account.address;
+      this.cfxAddress = account.address;
       this.cfxPrivateKey = account.privateKey;
-      this.cfxMainnetPublicKey = format.address(
+      this.cfxMainnetAddress = format.address(
         `0x1${account.address.toLowerCase().slice(3)}`,
         1029
       );
@@ -618,34 +598,107 @@ export default {
       this.bchPrivateKey = privateKey.toWIF();
       let publicKey = new BCHPublicKey(privateKey);
       let address = new BCHAddress(publicKey);
-      this.bchPublicKey = address.toString().slice(12);
+      this.bchAddress = address.toString().slice(12);
     },
 
-    genLTCKey() {
-      let privateKey = new LTCPrivateKey();
-      this.ltcPrivateKey = privateKey.toWIF();
-      let publicKey = new LTCPublicKey(privateKey);
-      let address = new LTCAddress(publicKey);
-      this.ltcPublicKey = address.toString();
-
-      let segwitP2SH = bitcoin.payments.p2sh({
-        redeem: bitcoin.payments.p2wpkh({
-          pubkey: publicKey.toDER(),
-        }),
-      });
-      // const decoded = bjsAddress.fromBase58Check(segwitP2SH.address);
-      const decoded = bitcoin.address.fromBase58Check(segwitP2SH.address);
-      let version = decoded['version'];
-      // Mainnet p2sh address:
-      if (version === 5) {
-        version = 50;
+    // generate LTC path
+    getLTCPath(type) {
+      let path = '';
+      // p2pkh
+      if (type == 'p2pkh') {
+        path = "m/44'/2'/0'/0/0";
       }
-      // const p2shAddress = bjsAddress.toBase58Check(decoded['hash'], version);
-      const p2shAddress = bitcoin.address.toBase58Check(
-        decoded['hash'],
-        version
-      );
-      this.ltcP2SHPublicKey = p2shAddress;
+      // p2sh-p2wpkh
+      else if (type == 'p2sh-p2wpkh') {
+        path = "m/49'/2'/0'/0/0";
+      }
+      // p2wpkh
+      else if (type == 'p2wpkh') {
+        path = "m/84'/2'/0'/0/0";
+      }
+      return path;
+    },
+
+     // generate LTC address
+    getLTCAddress(type, keyPair, network) {
+      var data;
+      // p2pkh
+      if (type == 'p2pkh') {
+        data = bitcoin.payments.p2pkh({
+          pubkey: keyPair.publicKey,
+          network: network,
+        });
+      }
+      // p2sh-p2wpkh
+      else if (type == 'p2sh-p2wpkh') {
+        data = bitcoin.payments.p2sh({
+          redeem: bitcoin.payments.p2wpkh({
+            pubkey: keyPair.publicKey,
+            network: network,
+          }),
+        });
+      }
+      // p2wpkh
+      else if (type == 'p2wpkh') {
+        data = bitcoin.payments.p2wpkh({
+          pubkey: keyPair.publicKey,
+          network: network,
+        });
+      }
+      if (typeof data == 'undefined') {
+        return '';
+      }
+
+      return data.address;
+    },
+
+    async genLTCKey() {
+      const addressTypes = ['p2pkh', 'p2sh-p2wpkh', 'p2wpkh'];
+      const LTC_NETWORK = {
+        messagePrefix: '\x19Litecoin Signed Message:\n',
+        bech32: 'ltc',
+        bip32: {
+          public: 0x019da462,
+            private: 0x019d9cfe,
+        },
+        pubKeyHash: 0x30,
+        scriptHash: 0x32,
+        wif: 0xb0,
+      };
+      const mnemonic = generateMnemonic();
+      const seed = await mnemonicToSeed(mnemonic);
+      const master = bip32Obj.fromSeed(seed, LTC_NETWORK);
+      const path = this.getLTCPath(addressTypes[0]);
+      const keyPair = master.derivePath(path);
+      this.ltcPrivateKey = keyPair.toWIF();
+       for (let index = 0; index < addressTypes.length; index++) {
+        let addressType = addressTypes[index];
+        switch (index) {
+          case 0:
+            this.ltcAddress = this.getLTCAddress(
+              addressType,
+              keyPair,
+              LTC_NETWORK
+            );
+            break;
+          case 1:
+            this.ltcP2SHAddress = this.getLTCAddress(
+              addressType,
+              keyPair,
+              LTC_NETWORK
+            );
+            break;
+          case 2:
+            this.ltcNativeSegwitAddress = this.getLTCAddress(
+              addressType,
+              keyPair,
+              LTC_NETWORK
+            );
+            break;
+          default:
+            break;
+        }
+      }
     },
 
     async genPolkadotKey() {
@@ -660,31 +713,31 @@ export default {
         type: 'sr25519',
       });
       const pair = keyring.addFromUri(mnemonic);
-      this.polkadotPublicKey = pair.address;
+      this.polkadotAddress = pair.address;
     },
 
     genAptosKey() {
       const account = new AptosAccount();
-      this.aptosPublicKey = account.authKey().hexString;
+      this.aptosAddress = account.authKey().hexString;
       this.aptosPrivateKey = account.toPrivateKeyObject().privateKeyHex;
     },
 
     genSolanaKey() {
       const account = Keypair.generate();
-      this.solanaPublicKey = account.publicKey.toBase58();
+      this.solanaAddress = account.publicKey.toBase58();
       this.solanaPrivateKey = bs58.encode(account.secretKey);
     },
 
     genEosKey() {
       ecc.randomKey().then((privateKey) => {
         this.eosPrivateKey = privateKey;
-        this.eosPublicKey = ecc.privateToPublic(privateKey);
+        this.eosAddress = ecc.privateToPublic(privateKey);
       });
     },
 
     genBinanceKey() {
       this.binancePrivateKey = BncClient.crypto.generatePrivateKey();
-      this.binancePublicKey = BncClient.crypto.getAddressFromPrivateKey(
+      this.binanceAddress = BncClient.crypto.getAddressFromPrivateKey(
         this.binancePrivateKey,
         'bnb'
       );
@@ -692,25 +745,25 @@ export default {
 
     genJingtumKey() {
       let wallet = Wallet.generate();
-      this.jingtumPublicKey = wallet.address;
+      this.jingtumAddress = wallet.address;
       this.jingtumPrivateKey = wallet.secret;
     },
 
     genCosmosKey() {
       let account = this.crypto.create();
-      this.cosmosPublicKey = account.address;
+      this.cosmosAddress = account.address;
       this.cosmosPrivateKey = account.privateKey;
     },
 
     genEthKey() {
       var account = this.web3.eth.accounts.create();
-      this.ethPublicKey = account.address;
+      this.ethAddress = account.address;
       this.ethPrivateKey = account.privateKey;
     },
 
     genTronKey() {
       this.tronWeb.createAccount().then((res) => {
-        this.tronPublicKey = res.address.base58;
+        this.tronAddress = res.address.base58;
         this.tronPrivateKey = res.privateKey;
       });
     },
@@ -718,42 +771,42 @@ export default {
     genIostKey() {
       var kp = IOST.KeyPair.newKeyPair();
       this.iostPrivateKey = kp.B58SecKey();
-      this.iostPublicKey = kp.B58PubKey();
+      this.iostAddress = kp.B58PubKey();
     },
 
-    //根据网络和类型生成对应的路径
+    // generate path
     getBtcPath(type) {
       let path = '';
-      //普通
+      // p2pkh
       if (type == 'p2pkh') {
         path = "m/44'/0'/0'/0/0";
       }
-      //隔离见证(兼容)
+      // p2sh-p2wpkh
       else if (type == 'p2sh-p2wpkh') {
         path = "m/49'/0'/0'/0/0";
       }
-      //隔离见证(原生)
+      // p2wpkh
       else if (type == 'p2wpkh') {
         path = "m/84'/0'/0'/0/0";
       }
-      //taproot
+      // taproot
       else if (type == 'p2tr') {
         path = "m/86'/0'/0'/0/0";
       }
       return path;
     },
 
-    //生成地址
+    // generate address
     getBtcAddress(type, keyPair, network) {
       var data;
-      //普通
+      // p2pkh
       if (type == 'p2pkh') {
         data = bitcoin.payments.p2pkh({
           pubkey: keyPair.publicKey,
           network: network,
         });
       }
-      //隔离见证(兼容)
+      // p2sh-p2wpkh
       else if (type == 'p2sh-p2wpkh') {
         data = bitcoin.payments.p2sh({
           redeem: bitcoin.payments.p2wpkh({
@@ -762,20 +815,19 @@ export default {
           }),
         });
       }
-      //隔离见证(原生)
+      // p2wpkh
       else if (type == 'p2wpkh') {
         data = bitcoin.payments.p2wpkh({
           pubkey: keyPair.publicKey,
           network: network,
         });
       }
-      //taproot
+      // taproot
       else if (type == 'p2tr') {
         data = bitcoin.payments.p2tr({
           internalPubkey: keyPair.publicKey.slice(1, 33),
         });
       }
-      //不支持的类型
       if (typeof data == 'undefined') {
         return '';
       }
@@ -796,28 +848,28 @@ export default {
         let addressType = addressTypes[index];
         switch (index) {
           case 0:
-            this.btcPublicKey = this.getBtcAddress(
+            this.btcAddress = this.getBtcAddress(
               addressType,
               keyPair,
               network
             );
             break;
           case 1:
-            this.btcP2SHPublicKey = this.getBtcAddress(
+            this.btcP2SHAddress = this.getBtcAddress(
               addressType,
               keyPair,
               network
             );
             break;
           case 2:
-            this.btcSegwitPublicKey = this.getBtcAddress(
+            this.btcSegwitAddress = this.getBtcAddress(
               addressType,
               keyPair,
               network
             );
             break;
           case 3:
-            this.btcTaprootPublicKey = this.getBtcAddress(
+            this.btcTaprootAddress = this.getBtcAddress(
               addressType,
               keyPair,
               network
@@ -832,9 +884,8 @@ export default {
     genNervosKey() {
       let privateKey = ec.genKeyPair().priv;
       let address = new Address(privateKey, { prefix: 'ckb' });
-
       this.nervosPrivateKey = '0x' + address.getPrivateKey();
-      this.nervosPublicKey = address.value;
+      this.nervosAddress = address.value;
     },
 
     onGenerate() {
@@ -889,6 +940,9 @@ export default {
           break;
         case 'NOSTR':
           this.genNostrKey();
+          break;
+        case 'SUI':
+          this.genSuiKey();
           break;
         default:
           break;

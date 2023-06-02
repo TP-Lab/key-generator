@@ -117,9 +117,16 @@ export default {
               title: this.$t('product.fiveDegrees'),
               url: 'https://www.5degrees.io/#/',
             },
+            {
+              width: '224px',
+              class: 'nav-icon-12',
+              desc: this.$t('product.stakeVaultDesc'),
+              line: false,
+              title: this.$t('product.stakeVault'),
+              url: this.stakeVaultUrl
+            }
           ],
         },
-        // 项目提交
         {
           title: this.$t('collaborations.title'),
           leftDis: true,
@@ -241,7 +248,6 @@ export default {
         'click',
         (e) => {
           if (this.clientWidth > 768) {
-            // 点击除弹出层外的空白区域
             if (this.$refs.navMain && !this.$refs.navMain.contains(e.target)) {
               this.navIndex = '';
             }
@@ -266,7 +272,6 @@ export default {
       }
       // return false
     },
-    // 鼠标进入
     navEnter(item, index, el) {
       el.preventDefault();
       if (item.children) {
@@ -281,7 +286,6 @@ export default {
         this.$router.push(item.url);
       }
     },
-    // 鼠标离开
     navLeave(item, index, el) {
       el.preventDefault();
       if (item.children) {
