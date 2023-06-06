@@ -97,7 +97,7 @@ export default {
     ltc: 'LTC',
     conflux: 'Conflux',
     nostr: 'Nostr',
-    sui: 'Sui',
+    sui: 'SUI',
   },
   main: {
     title: 'Key Generator',

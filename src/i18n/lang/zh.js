@@ -98,7 +98,7 @@ export default {
     ltc: 'LTC',
     conflux: 'Conflux',
     nostr: 'Nostr',
-    sui: 'Sui',
+    sui: 'SUI',
   },
   main: {
     title: '公私钥生成器',
