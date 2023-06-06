@@ -149,10 +149,10 @@ export default {
               title: this.$t('features.fiveDegrees'),
               url: 'https://www.5degrees.io/',
             },
-            {
-              title: this.$t('product.stakeVault'),
-              url: this.stakeVaultUrl
-            },
+            // {
+            //   title: this.$t('product.stakeVault'),
+            //   url: this.stakeVaultUrl
+            // },
             {
               title: this.$t('features.approvalDetector'),
               url: this.approvalUrl,

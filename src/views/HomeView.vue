@@ -397,6 +397,11 @@ export default {
           name: this.$t('chain.aptos'),
         },
         {
+          network: 'SUI',
+          icon: require('../assets/main/sui.png'),
+          name: this.$t('chain.sui'),
+        },
+        {
           chainId: 1030,
           network: 'CFX',
           icon: require('../assets/main/conflux.png'),
@@ -442,11 +447,6 @@ export default {
           network: 'NOSTR',
           icon: require('../assets/main/nostr.jpg'),
           name: this.$t('chain.nostr'),
-        },
-        {
-          network: 'SUI',
-          icon: require('../assets/main/sui.png'),
-          name: this.$t('chain.sui'),
         },
         {
           network: 'BCH',

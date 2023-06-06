@@ -117,14 +117,14 @@ export default {
               title: this.$t('product.fiveDegrees'),
               url: 'https://www.5degrees.io/#/',
             },
-            {
-              width: '224px',
-              class: 'nav-icon-12',
-              desc: this.$t('product.stakeVaultDesc'),
-              line: false,
-              title: this.$t('product.stakeVault'),
-              url: this.stakeVaultUrl
-            }
+            // {
+            //   width: '224px',
+            //   class: 'nav-icon-12',
+            //   desc: this.$t('product.stakeVaultDesc'),
+            //   line: false,
+            //   title: this.$t('product.stakeVault'),
+            //   url: this.stakeVaultUrl
+            // }
           ],
         },
         {
