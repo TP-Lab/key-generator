@@ -2,7 +2,7 @@
   <div class="FooterLayout">
     <footer class="content">
       <div class="follow-wrap">
-        <img class="logo" src="../../assets/logo-w.png" />
+        <img class="logo" src="../../assets/logo-dark.png" />
         <div class="footer-follows">
           <div
             class="footer-follow"
@@ -223,7 +223,7 @@ export default {
               },
               {
                 title: this.$t('COMMON.LAYOUT.dappStore'),
-                url: `https://tokenpocket.pro/${this.$i18n.locale}/dappstore`
+                url: this.dappStoreUrl
               },
               // {
               //   local: true,
@@ -317,7 +317,8 @@ export default {
                 },
                 {
                   title: this.$t('COMMON.LAYOUT.pressKit'),
-                  url: 'https://hilarious-eucalyptus-a2f.notion.site/TokenPocket-Brand-Resources-ab6e6019d20342eea025ec62955084fc'
+                  url: this.brandKitUrl
+                  // url: 'https://hilarious-eucalyptus-a2f.notion.site/TokenPocket-Brand-Resources-ab6e6019d20342eea025ec62955084fc'
                 }
               ]
               if (this.isZH) {

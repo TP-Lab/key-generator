@@ -1,3 +1,6 @@
+
+const domain = `tp.xyz`
+
 export default {
   computed: {
     isTokenPocketPro() {
@@ -18,7 +21,7 @@ export default {
       if (this.isTokenPocketPro) {
         return 'https://tokenpocket.pro/'
       } else {
-        return 'https://tpwallet.io/'
+        return `https://${domain}/`
       }
     },
     extensionUrl() {
@@ -30,9 +33,9 @@ export default {
         }
       } else {
         if (this.isZH) {
-          return 'https://extension.tpwallet.io/?locale=zh'
+          return `https://extension.${domain}/?locale=zh`
         } else {
-          return 'https://extension.tpwallet.io/?locale=en'
+          return `https://extension.${domain}/?locale=en`
         }
       }
     },
@@ -40,35 +43,35 @@ export default {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/submit/dapp`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/submit/dapp`
+        return `https://${domain}/${this.$i18n.locale}/submit/dapp`
       }
     },
     tokenUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/submit/token`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/submit/token`
+        return `https://${domain}/${this.$i18n.locale}/submit/token`
       }
     },
     nftUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/submit/nft`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/submit/nft`
+        return `https://${domain}/${this.$i18n.locale}/submit/nft`
       }
     },
     recruitingUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/recruiting`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/recruiting`
+        return `https://${domain}/${this.$i18n.locale}/recruiting`
       }
     },
     aboutUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/about`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/about`
+        return `https://${domain}/${this.$i18n.locale}/about`
       }
     },
     developerUrl() {
@@ -79,25 +82,30 @@ export default {
       }
     },
     helpUrl() {
-      if (this.isTokenPocketPro) {
-        if (this.isZH) {
-          return 'https://help.tokenpocket.pro/cn/'
-        } else {
-          return 'https://help.tokenpocket.pro/en/'
-        }
+      if (this.isZH) {
+        return 'https://help.tokenpocket.pro/cn/'
       } else {
-        if (this.isZH) {
-          return 'https://help.tpwallet.io/cn/'
-        } else {
-          return 'https://help.tpwallet.io/en/'
-        }
+        return 'https://help.tokenpocket.pro/en/'
       }
+      // if (this.isTokenPocketPro) {
+      //   if (this.isZH) {
+      //     return 'https://help.tokenpocket.pro/cn/'
+      //   } else {
+      //     return 'https://help.tokenpocket.pro/en/'
+      //   }
+      // } else {
+      //   if (this.isZH) {
+      //     return `https://help.${domain}/cn/`
+      //   } else {
+      //     return `https://help.${domain}/en/`
+      //   }
+      // }
     },
     desktopUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/download/pc`
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/download/pc`
+        return `https://${domain}/${this.$i18n.locale}/download/pc`
       }
     },
     approvalUrl() {
@@ -146,19 +154,24 @@ export default {
       }
     },
     contactUsUrl() {
-      if (this.isTokenPocketPro) {
-        if (this.isZH) {
-          return 'https://help.tokenpocket.pro/cn/contact-us/contact-methods'
-        } else {
-          return 'https://help.tokenpocket.pro/en/contact-us/contact-methods'
-        }
+      if (this.isZH) {
+        return 'https://help.tokenpocket.pro/cn/contact-us/contact-methods'
       } else {
-        if (this.isZH) {
-          return 'https://help.tpwallet.io/cn/contact-us/contact-methods'
-        } else {
-          return 'https://help.tpwallet.io/en/contact-us/contact-methods'
-        }
+        return 'https://help.tokenpocket.pro/en/contact-us/contact-methods'
       }
+      // if (this.isTokenPocketPro) {
+      //   if (this.isZH) {
+      //     return 'https://help.tokenpocket.pro/cn/contact-us/contact-methods'
+      //   } else {
+      //     return 'https://help.tokenpocket.pro/en/contact-us/contact-methods'
+      //   }
+      // } else {
+      //   if (this.isZH) {
+      //     return `https://help.${domain}/cn/contact-us/contact-methods`
+      //   } else {
+      //     return `https://help.${domain}/en/contact-us/contact-methods`
+      //   }
+      // }
     },
     rexUrl() {
       if (this.isTokenPocketPro) {
@@ -176,19 +189,24 @@ export default {
       }
     },
     joinUsUrl() {
-      if (!this.isTokenPocketPro) {
-        if (this.isZH) {
-          return 'https://help.tokenpocket.pro/cn/contact-us/joinus'
-        } else {
-          return 'https://help.tokenpocket.pro/en/contact-us/Joinus'
-        }
+      if (this.isZH) {
+        return 'https://help.tokenpocket.pro/cn/contact-us/joinus'
       } else {
-        if (this.isZH) {
-          return 'https://help.tpwallet.io/cn/contact-us/joinus'
-        } else {
-          return 'https://help.tpwallet.io/en/contact-us/Joinus'
-        }
+        return 'https://help.tokenpocket.pro/en/contact-us/Joinus'
       }
+      // if (!this.isTokenPocketPro) {
+      //   if (this.isZH) {
+      //     return 'https://help.tokenpocket.pro/cn/contact-us/joinus'
+      //   } else {
+      //     return 'https://help.tokenpocket.pro/en/contact-us/Joinus'
+      //   }
+      // } else {
+      //   if (this.isZH) {
+      //     return `https://help.${domain}/cn/contact-us/joinus`
+      //   } else {
+      //     return `https://help.${domain}/en/contact-us/Joinus`
+      //   }
+      // }
     },
     stakeVaultUrl() {
       if (this.isTokenPocketPro) {
@@ -209,7 +227,7 @@ export default {
       if (this.isTokenPocketPro) {
         return `https://verify.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
       } else {
-        return `https://verify.tpwallet.io/?locale=${this.$i18n.locale}#/`
+        return `https://verify.${domain}/?locale=${this.$i18n.locale}#/`
       }
     },
     fiveDegreesUrl() {
@@ -269,13 +287,17 @@ export default {
       // }
     },
     tokenClaimUrl() {
-      return `https://claim.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
+      if (this.isTokenPocketPro) {
+        return `https://claim.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
+      } else {
+        return `https://claim.${domain}/?locale=${this.$i18n.locale}#/`
+      }
     },
     dappStoreUrl() {
       if (this.isTokenPocketPro) {
         return `https://tokenpocket.pro/${this.$i18n.locale}/dappstore`;
       } else {
-        return `https://tpwallet.io/${this.$i18n.locale}/dappstore`;
+        return `https://${domain}/${this.$i18n.locale}/dappstore`;
       }
     },
     privacyUrl() {
@@ -287,9 +309,9 @@ export default {
         }
       } else {
         if (this.isZH) {
-          return `https://tpwallet.io/privacy-zh/index.html`;
+          return `https://${domain}/privacy-zh/index.html`;
         } else {
-          return `https://tpwallet.io/privacy-en/index.html`;
+          return `https://${domain}/privacy-en/index.html`;
         }
       }
     },
@@ -302,10 +324,17 @@ export default {
         }
       } else {
         if (this.isZH) {
-          return `https://tpwallet.io/terms-zh/index.html`;
+          return `https://${domain}/terms-zh/index.html`;
         } else {
-          return `https://tpwallet.io/terms-en/index.html`;
+          return `https://${domain}/terms-en/index.html`;
         }
+      }
+    },
+    brandKitUrl() {
+      if (this.isTokenPocketPro) {
+        return `https://tokenpocket.pro/${this.$i18n.locale}/brandkit`;
+      } else {
+        return `https://${domain}/${this.$i18n.locale}/brandkit`;
       }
     },
   }
