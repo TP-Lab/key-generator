@@ -56,9 +56,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "node-polyfill-webpack-plugin": "^2.0.1",
-    "node-sass": "^6.0.1",
     "prettier": "^2.4.1",
-    "sass-loader": "^10.4.1"
+    "sass": "^1.32.13",
+    "sass-loader": "^10.0.0"
   },
   "eslintConfig": {
     "root": true,
