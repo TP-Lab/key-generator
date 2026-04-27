@@ -68,6 +68,12 @@ export default {
           return 'Tiếng Việt'
         case 'th':
           return 'ภาษาไทย'
+        case 'id':
+          return 'Bahasa Indonesia'
+        case 'ms':
+          return 'Bahasa Melayu'
+        case 'ur':
+          return 'اردو'
         default:
           return '中文'
       }
@@ -271,17 +277,20 @@ export default {
           class: 'language-changes',
           children: [
             { title: '简体中文', lang: 'zh', link: '/zh', class: 'locale-zh' },
-            // { title: '繁体中文', lang: 'zh-tw', link: '/zh-tw', class: 'locale-zh-tw' },
+            { title: '繁體中文', lang: 'zh-tw', link: '/zh-tw', class: 'locale-zh-tw' },
             { title: 'English', lang: 'en', link: '/en', class: 'locale-en' },
             { title: '한국어', lang: 'ko', link: '/ko', class: 'locale-ko' },
-            // { title: 'Русский', lang: 'ru', link: '/ru', class: 'locale-ru' },
-            // { title: 'Español', lang: 'es', link: '/es', class: 'locale-es' },
-            // { title: 'हिन्दी', lang: 'hi', link: '/hi', class: 'locale-hi' },
-            // { title: 'Filipino', lang: 'fil', link: '/fil', class: 'locale-fil' },
-            // { title: 'Português', lang: 'pt', link: '/pt', class: 'locale-pt' },
+            { title: 'Русский', lang: 'ru', link: '/ru', class: 'locale-ru' },
+            { title: 'Español', lang: 'es', link: '/es', class: 'locale-es' },
+            { title: 'हिन्दी', lang: 'hi', link: '/hi', class: 'locale-hi' },
+            { title: 'Filipino', lang: 'fil', link: '/fil', class: 'locale-fil' },
+            { title: 'Português', lang: 'pt', link: '/pt', class: 'locale-pt' },
             { title: '日本語', lang: 'ja', link: '/ja', class: 'locale-ja' },
-            // { title: 'Tiếng Việt', lang: 'vi', link: '/vi', class: 'locale-vi' },
-            // { title: 'ภาษาไทย', lang: 'th', link: '/th', class: 'locale-th' }
+            { title: 'Tiếng Việt', lang: 'vi', link: '/vi', class: 'locale-vi' },
+            { title: 'ภาษาไทย', lang: 'th', link: '/th', class: 'locale-th' },
+            { title: 'Bahasa Indonesia', lang: 'id', link: '/id', class: 'locale-id' },
+            { title: 'Bahasa Melayu', lang: 'ms', link: '/ms', class: 'locale-ms' },
+            { title: 'اردو', lang: 'ur', link: '/ur', class: 'locale-ur' },
           ]
         }
       ]
@@ -326,7 +335,7 @@ export default {
     },
 
     navClass(item, index) {
-      let whiteList = ['/', '/en', '/zh', '/ko', '/zh-tw']
+      let whiteList = ['/', '/en', '/zh', '/zh-tw', '/ko', '/ja', '/ru', '/es', '/hi', '/fil', '/pt', '/vi', '/th', '/id', '/ms', '/ur']
       let isWhite = whiteList.indexOf(this.$route.fullPath) !== -1
 
       if (isWhite && !item.lang) return 'icon-down-fff'
@@ -430,6 +439,24 @@ export default {
 
     langChange(lang) {
       this.$i18n.locale = lang
+      localStorage.setItem('locale', lang)
+      document.title = {
+        en: 'Key Generator | TokenPocket',
+        zh: '公私钥生成器 | TokenPocket',
+        'zh-tw': '公私鑰產生器 | TokenPocket',
+        ko: '키 생성기 | TokenPocket',
+        ja: 'キージェネレーター | TokenPocket',
+        ru: 'Генератор ключей | TokenPocket',
+        es: 'Generador de claves | TokenPocket',
+        hi: 'की जेनरेटर | TokenPocket',
+        fil: 'Key Generator | TokenPocket',
+        pt: 'Gerador de chaves | TokenPocket',
+        vi: 'Trình tạo khóa | TokenPocket',
+        th: 'ตัวสร้างคีย์ | TokenPocket',
+        id: 'Generator Kunci | TokenPocket',
+        ms: 'Penjana Kunci | TokenPocket',
+        ur: 'کی جنریٹر | TokenPocket',
+      }[lang] || '公私钥生成器 | TokenPocket'
       this.navIndex = ''
       this.menuState = false
     },

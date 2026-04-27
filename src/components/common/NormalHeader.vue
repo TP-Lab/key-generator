@@ -345,6 +345,8 @@ export default {
   }
 
   .nav-children-wrap {
+    max-height: 600px;
+    overflow: auto;
     display: grid;
     grid-template-columns: 1fr;
     position: absolute;
@@ -358,6 +360,8 @@ export default {
     border: 1px solid #f1f3f5;
     border-radius: 12px;
     box-shadow: 0px 6px 16px 0px rgba(45, 54, 86, 0.05);
+    scrollbar-width: thin;
+    scrollbar-color: #cccccc transparent;
     &.products {
       grid-template-columns: 1fr 1fr;
       width: 674px;
