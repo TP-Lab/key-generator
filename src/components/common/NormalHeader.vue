@@ -12,7 +12,7 @@
 
       <div ref="navMain" class="navbar-tab-list">
         <a
-          v-for="(item, index) in navList"
+          v-for="(item, index) in navList.slice(0, navList.length - 1)"
           :key="index"
           class="nav-title"
           :href="item.local && item.url ? item.url : 'javascript:void(0)'"
@@ -90,6 +90,9 @@
             </a>
           </div>
         </a>
+        <div class="tp-language-dropdown-wrapper">
+          <tp-language-dropdown :languages="languages" :value="language" @language-change="onLanguageChange" />
+        </div>
       </div>
     </nav>
     <div
@@ -450,6 +453,12 @@ export default {
         }
       }
     }
+  }
+
+  .tp-language-dropdown-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
   }
 }
 

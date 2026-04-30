@@ -295,6 +295,9 @@ export default {
         }
       ]
     },
+    languages() {
+      return this.navList.slice(-1)[0].children
+    },
     currentNav() {
       // return this.navList[0]
       if (
@@ -314,6 +317,9 @@ export default {
   watch: {
     clientWidth() {
       this.navIndex = ''
+    },
+    menuState(value) {
+      document.body.style.overflow = value ? 'hidden' : ''
     }
   },
   mounted() {
@@ -323,6 +329,7 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('click', this.eventListen)
+    document.body.style.overflow = ''
   },
   methods: {
     // changeLanguage() {
@@ -435,6 +442,11 @@ export default {
         this.langChange(item.lang)
       }
       this.navIndex = ''
+    },
+
+    onLanguageChange(item) {
+      const { lang } = item.detail || {}
+      this.langChange(lang)
     },
 
     langChange(lang) {

@@ -88,7 +88,7 @@ export default {
   }
 
   .mini-header {
-    display: block;
+    display: flex;
   }
 }
 @media (min-width: 1200px) {
