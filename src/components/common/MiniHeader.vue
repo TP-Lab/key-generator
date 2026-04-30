@@ -111,20 +111,8 @@ export default {
     z-index: 99999; /* 跨框架最高的保证 */
     overflow-y: auto;
   }
-}
-
-@media screen and (max-width: 420px) {
   .mini-navbar-logo {
-    width: initial;
-    height: 24px;
-    max-height: 32px;
-  }
-
-  .menu-status {
-    img {
-      width: 16px;
-      height: 16px;
-    }
+    width: 156px;
   }
 }
 </style>
