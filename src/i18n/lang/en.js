@@ -58,15 +58,14 @@ export default {
       extensionWalletDesc: 'A better wallet on your computer.',
       desktop: 'Desktop Wallet',
       fiveDegrees: '5Degrees',
-      versionVerification: 'Version Verification',
+      versionVerification: 'Authenticity Check',
       versionVerificationDesc: 'Verify your wallet.',
       approvalDetector: 'Approval Detector',
       approvalDetectorDesc: 'View and unapprove your approved tokens.',
       tokenSecurity: 'Token Security',
       tokenSecurityDesc: 'Verify if the token is secure by its contract address.',
       keyGenerator: 'Key Generator',
-      keyGeneratorDesc:
-        'Randomly generate public and private keys for various networks.',
+      keyGeneratorDesc: 'Randomly generate public and private keys for various networks.',
       tokenProfile: 'Token Profile',
       tokenProfileDesc: 'Learn all information about the token.',
       tokenClaim: 'Token Claim',
@@ -77,7 +76,6 @@ export default {
       nostrAssetsBatchSenderDesc: 'A batch sending tool for NostrAssets.',
       BATCH_SENDER: 'BatchSender',
       BATCH_SENDER_DESC: 'Send tokens to multiple recipients at once.',
-  
       trade: 'Trade',
       swap: 'Transit Swap',
       swapDesc: 'Trade with the best prices.',
@@ -87,19 +85,17 @@ export default {
       buyCryptoDesc: 'Buy cryptocurrency with your credit cards.',
       market: 'Market',
       marketDesc: 'Real-time insights to discover hot tokens.',
-  
       information: 'Information',
       blockchainGuide: 'Blockchain Guide',
       tronWallet: 'TRON Guide',
       iostWallet: 'IOST Guide',
       tpMan: 'TP Man',
-  
       developers: 'Developers',
       github: 'Github (TP-Lab)',
       devCenter: 'Dev Center',
       developersDesc: 'TokenPocket developer documentation.',
       subToken: 'Submit Token',
-      subTokenDesc: 'Submit your token.',
+      subTokenDesc: 'Submit your token & NFT.',
       subDApp: 'Submit DApp',
       subDAppDesc: 'Submit your DApp, and show it after audit.',
       subNFT: 'Submit NFT',
@@ -107,21 +103,15 @@ export default {
       subChain: 'Submit Chain',
       subChainDesc: 'Submit your blockchain.',
       bugBounty: 'Bug Bounty',
-  
       tools: 'Tools',
-  
       build: 'Build',
-  
       learn: 'Learn',
-  
       explorer: 'Explorer',
-  
       company: 'Company',
       about: 'About',
       careers: 'Careers',
       pressKit: 'Brand Kit',
       swagShop: 'Swag Shop',
-  
       support: 'Support',
       helpCenter: 'Help Center',
       helpCenterDesc: 'Your go-to resources for answers and assistance.',
@@ -129,17 +119,21 @@ export default {
       contactUsDesc: 'Share your suggestions and ask any questions.',
       forum: 'Forum',
       forumDesc: 'Enjoy your talks with the community members.',
-  
       legal: 'Legal',
       privacyPolicy: 'Privacy Policy',
       terms: 'Terms of Use',
-
       toHome: 'Home',
       defiWallet: 'DeFi Wallet',
       ETHWallet: 'Ethereum Wallet',
       ethWallet: 'ETH Wallet',
-
-      dappStore: 'DApp Store'
+      dappStore: 'DApp Store',
+      darkMode: 'Dark Mode',
+      TPCard: 'TP Card',
+      TPCardDesc: 'A bank card operates in a decentralized manner.',
+      safetyTips: 'Safety Tips',
+      safetyTipsDesc: 'Real scam cases and practical digital asset protection guidance.',
+      blog: 'Blog',
+      blogDesc: 'Get the latest insights and expand your Web3 knowledge base.',
     }
   }
 };

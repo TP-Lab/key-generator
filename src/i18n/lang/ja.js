@@ -59,7 +59,7 @@ export default {
       extensionWalletDesc: 'コンピューター上でのより良いウォレット',
       desktop: 'デスクトップウォレット',
       fiveDegrees: '5Degrees',
-      versionVerification: 'バージョン検証',
+      versionVerification: '正規性確認',
       versionVerificationDesc: 'ウォレットの検証',
       approvalDetector: 'アプルーバルディテクター',
       approvalDetectorDesc: 'アプルーブの表示とリボーク',
@@ -77,29 +77,26 @@ export default {
       nostrAssetsBatchSenderDesc: 'NostrAssetsのためのバッチトランスファーツール',
       BATCH_SENDER: 'バッチトランスファー',
       BATCH_SENDER_DESC: '複数のアドレスに一度にトークンを転送',
-
       trade: '取引',
       swap: 'TransitSwap',
       swapDesc: 'ベストレートで取引。',
-      bridge: 'Bridge',
-      bridgeDesc: 'Ensuring seamless asset liquidity.',
+      bridge: 'ブリッジ',
+      bridgeDesc: 'シームレスに資産を他のチェーンにクロスします。',
       buyCrypto: '購入',
       buyCryptoDesc: 'クレジットカードで暗号資産を購入',
       market: '市場',
       marketDesc: 'リアルタイムインサイトでトレンドのトークンを見つける',
-
       information: '詳細',
       blockchainGuide: 'ブロックチェーンガイド',
       tronWallet: 'TRON Guide',
       iostWallet: 'IOST Guide',
       tpMan: 'TPマン',
-
       developers: '開発者',
       github: 'Github (TP-Lab)',
       devCenter: '開発者センター',
       developersDesc: 'TokenPocket開発者向けドキュメント',
       subToken: 'トークンを投稿',
-      subTokenDesc: 'トークンを投稿',
+      subTokenDesc: 'トークンとNFTを提出する。',
       subDApp: 'DAppの投稿',
       subDAppDesc: 'DAppを投稿し、監査後に表示',
       subNFT: 'NFTの投稿',
@@ -107,21 +104,15 @@ export default {
       subChain: 'チェーンを投稿',
       subChainDesc: 'ブロックチェーンをを投稿',
       bugBounty: 'バグバウンティ',
-
       tools: 'ツール',
-
       build: 'ビルド',
-
       learn: '学ぶ',
-
       explorer: 'エクスプローラー',
-
       company: '会社',
       about: 'TokenPocketについて',
       careers: 'キャリア',
       pressKit: 'ブランドキット',
       swagShop: 'スワッグショップ',
-
       support: 'サポート',
       helpCenter: 'ヘルプセンター',
       helpCenterDesc: '問題解決のためのアシスタント',
@@ -129,17 +120,19 @@ export default {
       contactUsDesc: '提案を共有と質問',
       forum: 'フォーラム',
       forumDesc: 'コミュニティメンバーとの会話を楽しむ',
-
       legal: '法的情報',
       privacyPolicy: 'プライバシーポリシー',
       terms: '利用規約',
-
       toHome: 'ホーム',
       defiWallet: 'DeFiウォレット',
       ETHWallet: 'イーサリアムウォレット',
       ethWallet: 'ETHウォレット',
-
-      dappStore: 'DAppストア'
+      dappStore: 'DAppストア',
+      darkMode: 'ダークモード',
+      TPCard: 'TP Card',
+      TPCardDesc: 'TPカードは分散型の仕組みで機能します。',
+      blog: 'ブログ',
+      blogDesc: '最新のインサイトを入手し、Web3の知識を深めましょう。',
     }
   }
 };

@@ -59,7 +59,7 @@ export default {
       extensionWalletDesc: '컴퓨터에서 더 나은 지갑 사용.',
       desktop: '데스크탑 지갑',
       fiveDegrees: '5Degrees',
-      versionVerification: '버전 검증',
+      versionVerification: '정품 확인',
       versionVerificationDesc: '지갑을 검증하세요.',
       approvalDetector: '승인 탐지기',
       approvalDetectorDesc: '승인된 토큰 보기 및 승인 해제.',
@@ -77,29 +77,26 @@ export default {
       nostrAssetsBatchSenderDesc: 'NostrAssets용 일괄 전송 도구.',
       BATCH_SENDER: '일괄 전송',
       BATCH_SENDER_DESC: '한 번에 여러 수신자에게 토큰 전송.',
-  
       trade: '거래',
       swap: '트랜짓 스왑',
       swapDesc: '최상의 가격으로 스왑',
-      bridge: 'Bridge',
-      bridgeDesc: 'Ensuring seamless asset liquidity.',
+      bridge: '브릿지',
+      bridgeDesc: '블록체인 간 거래 지원',
       buyCrypto: '구매',
       buyCryptoDesc: '신용카드로 암호화폐 구매.',
       market: '마켓',
       marketDesc: '실시간 인사이트 인기 토큰 확인.',
-  
       information: '정보',
       blockchainGuide: 'Blockchain 지갑 가이드라인',
       tronWallet: 'TRON 지갑 가이드라인',
       iostWallet: 'IOST 지갑 가이드라인',
       tpMan: 'TP 맨',
-  
       developers: '개발자',
       github: 'Github (TP-Lab)',
       devCenter: '개발자 센터',
       developersDesc: '토큰포켓 개발자 문서.',
       subToken: '토큰 제출',
-      subTokenDesc: '토큰 제출.',
+      subTokenDesc: '토큰 및 NFT 제출.',
       subDApp: 'DApp 제출',
       subDAppDesc: 'DApp 제출 검토 후 표시.',
       subNFT: 'NFT 제출',
@@ -107,21 +104,15 @@ export default {
       subChain: '체인 제출',
       subChainDesc: '블록체인 제출.',
       bugBounty: '버그 바운티',
-  
       tools: '도구',
-  
       build: '빌드',
-  
       learn: 'Learn',
-  
       explorer: 'Explorer',
-  
       company: '회사',
       about: '에 대한',
       careers: '직업',
       pressKit: '브랜드 키트',
       swagShop: '스웨그 샵',
-  
       support: '서포트',
       helpCenter: '도움 센터',
       helpCenterDesc: '답변과 지원을 위한 리소스.',
@@ -129,17 +120,19 @@ export default {
       contactUsDesc: '제안 공유 및 질문.',
       forum: '포럼',
       forumDesc: '커뮤니티 회원들과의 대화.',
-  
       legal: '법률',
       privacyPolicy: '개인 정보 보호 정책',
       terms: '이용 약관',
-  
       toHome: '홈',
       defiWallet: 'DeFi 지갑',
       ETHWallet: '이더리움 지갑',
       ethWallet: 'eth 지갑',
-
-      dappStore: 'DApp 스토어'
+      dappStore: 'DApp 스토어',
+      darkMode: '다크 모드',
+      TPCard: 'TP Card',
+      TPCardDesc: '뱅크 카드는 탈중앙화 방식으로 운영됩니다.',
+      blog: '블로그',
+      blogDesc: '최신 인사이트를 확인하고 Web3 지식 스펙트럼을 넓혀보세요.',
     }
   }
 };

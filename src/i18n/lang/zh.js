@@ -57,7 +57,7 @@ export default {
       extensionWalletDesc: '您电脑上更好用的钱包',
       desktop: '桌面端钱包',
       fiveDegrees: '5Degrees',
-      versionVerification: '版本校验',
+      versionVerification: '正版检测',
       versionVerificationDesc: '验证你的钱包是否为正版',
       approvalDetector: '授权检测',
       approvalDetectorDesc: '查看和取消授权您已经授权的代币',
@@ -75,7 +75,6 @@ export default {
       nostrAssetsBatchSenderDesc: 'Nostr资产的批量发送工具',
       BATCH_SENDER: '批量转账',
       BATCH_SENDER_DESC: '一次性向多个接收者批量发送代币',
-  
       trade: '交易',
       swap: '闪兑',
       swapDesc: '用最优价格交易',
@@ -85,19 +84,17 @@ export default {
       buyCryptoDesc: '用信用卡购买数字资产',
       market: '市场',
       marketDesc: '实时洞察，发现热门代币',
-  
       information: '信息',
       blockchainGuide: '区块链小白书',
       tronWallet: '波场小白书',
       iostWallet: 'IOST小白书',
       tpMan: 'TP侠',
-  
       developers: '开发者资源',
       github: 'Github (TP-Lab)',
       devCenter: '开发者中心',
       developersDesc: 'TokenPocket的开发者文档',
       subToken: '提交代币',
-      subTokenDesc: '提交您的数字资产',
+      subTokenDesc: '提交您的数字资产和NFT',
       subDApp: '提交DApp',
       subDAppDesc: '提交您的DApp，我们将在审核后展示它',
       subNFT: '提交NFT',
@@ -105,21 +102,15 @@ export default {
       subChain: '提交公链',
       subChainDesc: '提交您的区块链',
       bugBounty: '漏洞赏金',
-  
       tools: '工具',
-  
       build: '开发者中心',
-  
       learn: '学习',
-  
       explorer: '探索',
-  
       company: '公司',
       about: '关于',
       careers: '招聘',
       pressKit: '品牌素材',
       swagShop: '周边商店',
-  
       support: '支持',
       helpCenter: '帮助中心',
       helpCenterDesc: '答疑解惑与获取资源的首选',
@@ -127,17 +118,21 @@ export default {
       contactUsDesc: '分享您对TokenPocket的任何建议，提出您的任何疑问',
       forum: '社区论坛',
       forumDesc: '祝您与社区成员会谈愉快',
-  
       legal: '法律',
       privacyPolicy: '隐私策略',
       terms: '服务协议',
-
       toHome: '返回首页',
       defiWallet: 'DeFi钱包',
       ETHWallet: '以太坊錢包',
       ethWallet: 'ETH钱包',
-
-      dappStore: 'DApp 商店'
+      dappStore: 'DApp 商店',
+      darkMode: '暗黑模式',
+      TPCard: 'TP Card',
+      TPCardDesc: '你的第一张去中心化银行卡',
+      safetyTips: '防诈骗指南',
+      safetyTipsDesc: '真实案例与数字资产防骗指南',
+      blog: '博客',
+      blogDesc: '获取最新观点解析，拓展Web3知识储备',
     }
   }
 };
