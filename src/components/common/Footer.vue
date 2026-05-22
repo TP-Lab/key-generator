@@ -8,7 +8,7 @@
             class="footer-follow"
             v-for="(item, index) in followList"
             :key="index"
-            :class="['footer-follow-' + (index + 1)]"
+            :class="[item.class]"
             @click="openFollow(item)"
           ></div>
           <a
@@ -83,7 +83,7 @@ export default {
     },
     followList() {
       return [
-        { url: 'https://twitter.com/TokenPocket_TP' },
+        { url: 'https://twitter.com/TokenPocket_TP', class: 'footer-follow-1' },
         {
           isTelegram: true,
           url:
@@ -91,13 +91,13 @@ export default {
               ? 'https://t.me/tokenPocket_cn'
               : this.language === 'ko'
               ? 'https://t.me/tokenpocket_kor'
-              : 'https://t.me/tokenpocket_en'
+              : 'https://t.me/tokenpocket_en',
+          class: 'footer-follow-2'
         },
-        { url: 'https://fans.tokenpocket.pro/' },
-        { url: 'https://www.youtube.com/channel/UCudaS5hcbqUaMtOGHmQ2e0A' },
-        { url: 'https://discord.com/invite/NKPM8TXFQk' },
-        { url: 'https://github.com/TP-Lab' },
-        { url: 'https://tokenpocket-gm.medium.com/' }
+        { url: 'https://fans.tokenpocket.pro/', class: 'footer-follow-3' },
+        { url: 'https://www.youtube.com/channel/UCudaS5hcbqUaMtOGHmQ2e0A', class: 'footer-follow-4' },
+        { url: 'https://github.com/TP-Lab', class: 'footer-follow-6' },
+        { url: 'https://tokenpocket-gm.medium.com/', class: 'footer-follow-7' }
       ]
     },
     isZH() {
@@ -134,20 +134,20 @@ export default {
                 url: this.extensionUrl
               },
               {
+                title: this.$t('COMMON.LAYOUT.TPCard'),
+                url: this.TPCardUrl
+              },
+              {
                 title: this.$t('COMMON.LAYOUT.swap'),
-                url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/`
+                url: this.transitSwapUrl
               },
               {
                 title: this.$t('COMMON.LAYOUT.market'),
-                url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/market`
+                url: this.transitSwapMarkUrl
               },
               {
                 title: this.$t('COMMON.LAYOUT.buyCryptoFooter'),
                 url: this.transitBuyUrl
-              },
-              {
-                title: this.$t('COMMON.LAYOUT.fiveDegrees'),
-                url: this.fiveDegreesUrl
               }
             ]
           }
@@ -173,10 +173,10 @@ export default {
                 title: this.$t('COMMON.LAYOUT.easyInscription'),
                 url: this.inscriptionUrl
               },
-              // {
-              //   title: this.$t('COMMON.LAYOUT.keyGenerator'),
-              //   url: this.keyUrl
-              // },
+              {
+                title: this.$t('COMMON.LAYOUT.keyGenerator'),
+                curPage: true
+              },
               {
                 title: this.$t('COMMON.LAYOUT.approvalDetector'),
                 url: this.approvalUrl
@@ -207,11 +207,11 @@ export default {
             data: [
               {
                 title: this.$t('COMMON.LAYOUT.swap'),
-                url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/`,
+                url: this.transitSwapUrl,
               },
               {
                 title: this.$t('COMMON.LAYOUT.bridge'),
-                url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/`,
+                url: this.transitSwapUrl,
               },
               {
                 title: this.$t('COMMON.LAYOUT.buyCrypto'),
@@ -219,11 +219,15 @@ export default {
               },
               {
                 title: this.$t('COMMON.LAYOUT.market'),
-                url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/market`
+                url: this.transitSwapMarkUrl
               },
               {
                 title: this.$t('COMMON.LAYOUT.dappStore'),
                 url: this.dappStoreUrl
+              },
+              {
+                title: this.$t('COMMON.LAYOUT.safetyTips'),
+                url: this.safetyTipsUrl
               },
               // {
               //   local: true,

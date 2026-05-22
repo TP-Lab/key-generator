@@ -251,6 +251,12 @@ export default {
         return 'https://transit.finance/'
       }
     },
+    transitSwapUrl() {
+      return `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&theme=light#/`
+    },
+    transitSwapMarkUrl() {
+      return `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&theme=light#/market`
+    },
     keyUrl() {
       if (this.isTokenPocketPro) {
         return `https://key.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
@@ -291,6 +297,13 @@ export default {
         return `https://claim.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
       } else {
         return `https://claim.${domain}/?locale=${this.$i18n.locale}#/`
+      }
+    },
+    TPCardUrl() {
+      if (this.isTokenPocketPro) {
+        return `https://card.tokenpocket.pro/?locale=${this.$i18n.locale}#/`
+      } else {
+        return `https://card.${domain}/?locale=${this.$i18n.locale}#/`
       }
     },
     dappStoreUrl() {
@@ -335,6 +348,20 @@ export default {
         return `https://tokenpocket.pro/${this.$i18n.locale}/brandkit`;
       } else {
         return `https://${domain}/${this.$i18n.locale}/brandkit`;
+      }
+    },
+    safetyTipsUrl() {
+      if (this.isTokenPocketPro) {
+        return `https://tokenpocket.pro/${this.$i18n.locale}/safety-tips`
+      } else {
+        return `https://${domain}/${this.$i18n.locale}/safety-tips`
+      }
+    },
+    blogUrl() {
+      if (this.isTokenPocketPro) {
+        return `https://tokenpocket.pro/${this.$i18n.locale}/blog`
+      } else {
+        return `https://${domain}/${this.$i18n.locale}/blog`
       }
     },
   }

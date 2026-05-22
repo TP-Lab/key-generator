@@ -34,7 +34,7 @@ const layout = {
   swap: '閃兌',
   swapDesc: '用最優價格交易',
   bridge: '跨鏈橋',
-  bridgeDesc: 'Ensuring seamless asset liquidity.',
+  bridgeDesc: '在不同公鏈之間無縫銜接資產',
   buyCrypto: '購買代幣',
   buyCryptoDesc: '用信用卡購買數字資產',
   market: '市場',

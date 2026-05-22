@@ -149,7 +149,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@for $i from 1 through 25 {
+@for $i from 1 through 28 {
   .nav-children-item {
     .nav-children-header {
       display: flex;

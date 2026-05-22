@@ -85,6 +85,7 @@ export default {
           local: true,
           title: this.$t('COMMON.LAYOUT.products'),
           img: require('../../assets/nav-icon/products.png'),
+          navMobileIcon: require('../../assets/nav-icon/1-m.png'),
           children: [
             {
               class: 'nav-icon-1',
@@ -99,6 +100,12 @@ export default {
               url: this.keypalUrl
             },
             {
+              class: 'nav-icon-26',
+              desc: this.$t('COMMON.LAYOUT.TPCardDesc'),
+              title: this.$t('COMMON.LAYOUT.TPCard'),
+              url: this.TPCardUrl
+            },
+            {
               class: 'nav-icon-3',
               desc: this.$t('COMMON.LAYOUT.extensionWalletDesc'),
               title: this.$t('COMMON.LAYOUT.extensionWallet'),
@@ -110,6 +117,7 @@ export default {
         {
           title: this.$t('COMMON.LAYOUT.tools'),
           img: require('../../assets/nav-icon/tools.png'),
+          navMobileIcon: require('../../assets/nav-icon/3-m.png'),
           column: 3,
           children: [
             {
@@ -119,10 +127,10 @@ export default {
               url: this.verifyVersionUrl
             },
             {
-              class: 'nav-icon-5',
-              desc: this.$t('COMMON.LAYOUT.easyInscriptionDesc'),
-              title: this.$t('COMMON.LAYOUT.easyInscription'),
-              url: this.inscriptionUrl
+              class: 'nav-icon-28',
+              desc: this.$t('COMMON.LAYOUT.safetyTipsDesc'),
+              title: this.$t('COMMON.LAYOUT.safetyTips'),
+              url: this.safetyTipsUrl
             },
             {
               class: 'nav-icon-6',
@@ -136,12 +144,11 @@ export default {
               title: this.$t('COMMON.LAYOUT.tokenSecurity'),
               url: this.tokenSecurityUrl
             },
-            // {
-            //   class: 'nav-icon-8',
-            //   desc: this.$t('COMMON.LAYOUT.keyGeneratorDesc'),
-            //   title: this.$t('COMMON.LAYOUT.keyGenerator'),
-            //   url: this.keyUrl
-            // },
+            {
+              class: 'nav-icon-8',
+              desc: this.$t('COMMON.LAYOUT.keyGeneratorDesc'),
+              title: this.$t('COMMON.LAYOUT.keyGenerator')
+            },
             {
               class: 'nav-icon-9',
               desc: this.$t('COMMON.LAYOUT.tokenClaimDesc'),
@@ -172,18 +179,19 @@ export default {
         {
           title: this.$t('COMMON.LAYOUT.trade'),
           img: require('../../assets/nav-icon/trade.png'),
+          navMobileIcon: require('../../assets/nav-icon/4-m.png'),
           children: [
             {
               class: 'nav-icon-13',
               desc: this.$t('COMMON.LAYOUT.swapDesc'),
               title: this.$t('COMMON.LAYOUT.swap'),
-              url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&mode=false#/`
+              url: this.transitSwapUrl
             },
             {
               class: 'nav-icon-14',
               desc: this.$t('COMMON.LAYOUT.bridgeDesc'),
               title: this.$t('COMMON.LAYOUT.bridge'),
-              url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}&ode=false#/`
+              url: this.transitSwapUrl
             },
             {
               class: 'nav-icon-15',
@@ -195,19 +203,21 @@ export default {
               class: 'nav-icon-16',
               desc: this.$t('COMMON.LAYOUT.marketDesc'),
               title: this.$t('COMMON.LAYOUT.market'),
-              url: `https://swap.transit.finance/?from=tp&locale=${this.$i18n.locale}#/market`
+              url: this.transitSwapMarkUrl
             }
           ]
         },
         // dappstore
         {
           title: this.$t('COMMON.LAYOUT.dappStore'),
+          navMobileIcon: require('../../assets/nav-icon/5-m.png'),
           url: this.dappStoreUrl
         },
         // 项目提交
         {
           title: this.$t('COMMON.LAYOUT.build'),
           img: require('../../assets/nav-icon/build.png'),
+          navMobileIcon: require('../../assets/nav-icon/6-m.png'),
           leftDis: true,
           children: [
             {
@@ -245,6 +255,7 @@ export default {
         {
           title: this.$t('COMMON.LAYOUT.support'),
           img: require('../../assets/nav-icon/support.png'),
+          navMobileIcon: require('../../assets/nav-icon/7-m.png'),
           children: [
             {
               class: 'nav-icon-22',
@@ -263,6 +274,18 @@ export default {
               desc: this.$t('COMMON.LAYOUT.forumDesc'),
               title: this.$t('COMMON.LAYOUT.forum'),
               url: `https://fans.tokenpocket.pro/`
+            },
+            {
+              class: 'nav-icon-27',
+              desc: this.$t('COMMON.LAYOUT.blogDesc'),
+              title: this.$t('COMMON.LAYOUT.blog'),
+              url: this.blogUrl
+            },
+            {
+              class: 'nav-icon-28',
+              desc: this.$t('COMMON.LAYOUT.safetyTipsDesc'),
+              title: this.$t('COMMON.LAYOUT.safetyTips'),
+              url: this.safetyTipsUrl
             }
           ]
         },
@@ -275,6 +298,7 @@ export default {
           title: this.titleLang,
           lang: true,
           class: 'language-changes',
+          navMobileIcon: require('../../assets/nav-icon/9-m.png'),
           children: [
             { title: '简体中文', lang: 'zh', link: '/zh', class: 'locale-zh' },
             { title: '繁體中文', lang: 'zh-tw', link: '/zh-tw', class: 'locale-zh-tw' },
