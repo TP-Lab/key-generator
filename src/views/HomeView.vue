@@ -216,10 +216,7 @@
                   />
                 </div>
                 <div class="key-box sui" v-show="network === 'SUI'">
-                  <KeyItem
-                    :title="$t('main.publicKey')"
-                    :value="suiAddress"
-                  />
+                  <KeyItem :title="$t('main.publicKey')" :value="suiAddress" />
                   <KeyItem
                     :title="$t('main.privateKey')"
                     :value="suiPrivateKey"
@@ -263,7 +260,7 @@ import { ec as EC } from 'elliptic';
 import { Wallet } from 'jingtum-base-lib';
 import Address from '@nervosnetwork/ckb-sdk-address';
 import ecc from 'eosjs-ecc';
-import iost from 'iost';
+import IOST from 'iost/dist/iost.min.js';
 import TronWeb from 'tronweb';
 import Web3 from 'web3';
 import BncClient from '@binance-chain/javascript-sdk';
@@ -284,9 +281,8 @@ import {
 } from 'bitcore-lib-cash';
 import { format } from 'js-conflux-sdk';
 import { Ed25519Keypair } from '@mysten/sui.js';
-import { toHEX } from "@mysten/bcs";
+import { toHEX } from '@mysten/bcs';
 import bs58 from 'bs58';
-import { generatePrivateKey, getPublicKey } from 'nostr-tools';
 import * as secp256k1 from '@noble/secp256k1';
 import { bech32 } from '@scure/base';
 import { generateMnemonic, mnemonicToSeed, mnemonicToSeedSync } from 'bip39';
@@ -304,6 +300,9 @@ const bip32Obj = BIP32Factory(eccObj);
 import Header from '../components/common/Header.vue';
 import Footer from '../components/common/Footer.vue';
 import KeyItem from '../components/common/KeyItem.vue';
+
+const mainAsset = (name) =>
+  new URL(`../assets/main/${name}`, import.meta.url).href;
 
 export default {
   name: 'HomeView',
@@ -372,95 +371,95 @@ export default {
       return [
         {
           network: 'BTC',
-          icon: require('../assets/main/btc.png'),
+          icon: mainAsset('btc.png'),
           name: this.$t('chain.btc'),
         },
         {
           network: 'ETH',
-          icon: require('../assets/main/eth.png'),
+          icon: mainAsset('eth.png'),
           name: this.$t('chain.ethereum'),
         },
         {
           chainId: 728126428,
           network: 'TRX',
-          icon: require('../assets/main/tron.png'),
+          icon: mainAsset('tron.png'),
           name: this.$t('chain.tron'),
         },
         {
           network: 'SOL',
-          icon: require('../assets/main/solana.png'),
+          icon: mainAsset('solana.png'),
           name: this.$t('chain.solana'),
         },
         {
           network: 'APT',
-          icon: require('../assets/main/aptos.png'),
+          icon: mainAsset('aptos.png'),
           name: this.$t('chain.aptos'),
         },
         {
           network: 'SUI',
-          icon: require('../assets/main/sui.png'),
+          icon: mainAsset('sui.png'),
           name: this.$t('chain.sui'),
         },
         {
           chainId: 1030,
           network: 'CFX',
-          icon: require('../assets/main/conflux.png'),
+          icon: mainAsset('conflux.png'),
           name: this.$t('chain.conflux'),
         },
         {
           network: 'DOGE',
-          icon: require('../assets/main/dogecoin.png'),
+          icon: mainAsset('dogecoin.png'),
           name: this.$t('chain.dogecoin'),
         },
         {
           network: 'EOS',
-          icon: require('../assets/main/eos.png'),
+          icon: mainAsset('eos.png'),
           name: this.$t('chain.eos'),
         },
         {
           network: 'ATOM',
-          icon: require('../assets/main/cosmos.png'),
+          icon: mainAsset('cosmos.png'),
           name: this.$t('chain.cosmos'),
         },
         {
           network: 'IOST',
-          icon: require('../assets/main/iost.png'),
+          icon: mainAsset('iost.png'),
           name: this.$t('chain.iost'),
         },
         {
           network: 'DOT',
           ss58: '0',
-          icon: require('../assets/main/Polkadot.png'),
+          icon: mainAsset('Polkadot.png'),
           name: this.$t('chain.polkadot'),
         },
         {
           network: 'CKB',
-          icon: require('../assets/main/nervos.png'),
+          icon: mainAsset('nervos.png'),
           name: this.$t('chain.nervos'),
         },
         {
           network: 'BNB',
-          icon: require('../assets/main/binance.png'),
+          icon: mainAsset('binance.png'),
           name: this.$t('chain.binance'),
         },
         {
           network: 'NOSTR',
-          icon: require('../assets/main/nostr.jpg'),
+          icon: mainAsset('nostr.jpg'),
           name: this.$t('chain.nostr'),
         },
         {
           network: 'BCH',
-          icon: require('../assets/main/bch.png'),
+          icon: mainAsset('bch.png'),
           name: this.$t('chain.bch'),
         },
         {
           network: 'LTC',
-          icon: require('../assets/main/ltc.png'),
+          icon: mainAsset('ltc.png'),
           name: this.$t('chain.ltc'),
         },
         {
           network: 'JMB',
-          icon: require('../assets/main/jingtum.png'),
+          icon: mainAsset('jingtum.png'),
           name: this.$t('chain.jingtum'),
         },
       ];
@@ -557,8 +556,8 @@ export default {
     },
 
     genNostrKey() {
-      let sk = generatePrivateKey(); // `sk` is a hex string
-      let pk = getPublicKey(sk); // `pk` is a hex string
+      let sk = secp256k1.utils.bytesToHex(secp256k1.utils.randomPrivateKey());
+      let pk = secp256k1.utils.bytesToHex(secp256k1.schnorr.getPublicKey(sk));
       this.nostrPrivateKey = this.nsecEncode(sk);
       this.nostrAddress = this.npubEncode(pk);
     },
@@ -580,7 +579,7 @@ export default {
     genSuiKey() {
       const keypair = new Ed25519Keypair();
       this.suiAddress = keypair.getPublicKey().toSuiAddress();
-      this.suiPrivateKey = toHEX(keypair.keypair.secretKey.slice(0, 32))
+      this.suiPrivateKey = toHEX(keypair.keypair.secretKey.slice(0, 32));
     },
 
     genConfluxKey() {
@@ -619,7 +618,7 @@ export default {
       return path;
     },
 
-     // generate LTC address
+    // generate LTC address
     getLTCAddress(type, keyPair, network) {
       var data;
       // p2pkh
@@ -659,7 +658,7 @@ export default {
         bech32: 'ltc',
         bip32: {
           public: 0x019da462,
-            private: 0x019d9cfe,
+          private: 0x019d9cfe,
         },
         pubKeyHash: 0x30,
         scriptHash: 0x32,
@@ -671,7 +670,7 @@ export default {
       const path = this.getLTCPath(addressTypes[0]);
       const keyPair = master.derivePath(path);
       this.ltcPrivateKey = keyPair.toWIF();
-       for (let index = 0; index < addressTypes.length; index++) {
+      for (let index = 0; index < addressTypes.length; index++) {
         let addressType = addressTypes[index];
         switch (index) {
           case 0:
@@ -848,11 +847,7 @@ export default {
         let addressType = addressTypes[index];
         switch (index) {
           case 0:
-            this.btcAddress = this.getBtcAddress(
-              addressType,
-              keyPair,
-              network
-            );
+            this.btcAddress = this.getBtcAddress(addressType, keyPair, network);
             break;
           case 1:
             this.btcP2SHAddress = this.getBtcAddress(
@@ -968,6 +963,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../style/home.scss';
-</style>
+<style lang="scss" src="../style/home.scss"></style>

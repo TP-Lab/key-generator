@@ -1,25 +1,31 @@
 # key-generator
 
 ## Project setup
-Requirements: Node v18+
+Requirements: Node 20.19+ and pnpm 10+
 ```
-npm install
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+pnpm dev
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+pnpm build
 ```
 
-### Lints and fixes files
+### Build other deployment targets
 ```
-npm run lint
+pnpm build:dev
+pnpm build:beta
+```
+
+### Preview the production build locally
+```
+pnpm preview
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Vite Configuration Reference](https://vite.dev/config/).

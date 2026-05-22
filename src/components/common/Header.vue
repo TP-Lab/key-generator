@@ -12,8 +12,10 @@
 </template>
 
 <script>
-import MiniHeader from './MiniHeader.vue'
-import NormalHeader from './NormalHeader.vue'
+import MiniHeader from './MiniHeader.vue';
+import NormalHeader from './NormalHeader.vue';
+
+const defaultNavLogo = new URL('../../assets/logo.png', import.meta.url).href;
 
 export default {
   components: {
@@ -23,11 +25,11 @@ export default {
   props: {
     navLogo: {
       type: String,
-      default: require('../../assets/logo.png')
+      default: defaultNavLogo,
     },
     navTitleColor: {
       type: String,
-      default: '#fff'
+      default: '#fff',
     },
     // navIconColor: {
     //   type: String,
@@ -35,32 +37,32 @@ export default {
     // },
     arrowClass: {
       type: String,
-      default: 'icon-down-333'
+      default: 'icon-down-333',
     },
     langClass: {
       type: String,
-      default: 'icon-earth'
-    }
+      default: 'icon-earth',
+    },
   },
 
   data() {
     return {
-      scroll: 0
-    }
+      scroll: 0,
+    };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll() {
       this.scroll =
-        document.documentElement.scrollTop || document.body.scrollTop
-    }
+        document.documentElement.scrollTop || document.body.scrollTop;
+    },
   },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
-  }
-}
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+};
 </script>
 
 <style lang="scss" scoped>

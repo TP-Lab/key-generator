@@ -2,16 +2,20 @@
   "name": "key-generator",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.27.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "NODE_ENV=production VUE_APP_ENV=production vue-cli-service build",
-    "build:dev": "NODE_ENV=production VUE_APP_ENV=dev vue-cli-service build",
-    "build:beta": "NODE_ENV=production  VUE_APP_ENV=beta vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite --mode development",
+    "serve": "vite --mode development",
+    "build": "NODE_ENV=production VITE_APP_ENV=production vite build --mode production",
+    "build:dev": "NODE_ENV=production VITE_APP_ENV=dev vite build --mode development",
+    "build:beta": "NODE_ENV=production VITE_APP_ENV=beta vite build --mode beta",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@mysten/bcs": "^0.7.1",
     "@binance-chain/javascript-sdk": "^2.15.0",
     "@mysten/sui.js": "^0.33.0",
+    "@noble/hashes": "^1.3.0",
     "@nervosnetwork/ckb-sdk-address": "^0.18.0",
     "@noble/secp256k1": "^1.7.1",
     "@polkadot/extension-dapp": "^0.30.1",
@@ -35,9 +39,8 @@
     "jingtum-base-lib": "^1.2.2",
     "js-conflux-sdk": "^2.1.6",
     "lodash": "^4.17.15",
-    "nostr-tools": "^0.24.1",
     "tronweb": "^2.7.1",
-    "vue": "^3.2.13",
+    "vue": "3.5.4",
     "vue-clipboard2": "^0.3.3",
     "vue-i18n": "^9.3.0-beta.17",
     "vue-router": "^4.0.3",
@@ -47,35 +50,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "node-polyfill-webpack-plugin": "^2.0.1",
-    "prettier": "^2.4.1",
+    "@vitejs/plugin-vue": "^6.0.6",
     "sass": "^1.32.13",
-    "sass-loader": "^10.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
+    "vite": "^8.0.10",
+    "vite-plugin-node-polyfills": "^0.28.0"
   },
   "browserslist": [
     "> 1%",

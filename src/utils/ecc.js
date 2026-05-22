@@ -1,6 +1,7 @@
 import { hmac } from '@noble/hashes/hmac';
 import { sha256 } from '@noble/hashes/sha256';
 import * as necc from '@noble/secp256k1';
+import { Buffer } from 'buffer';
 import { crypto as bcrypto } from 'bitcoinjs-lib';
 
 necc.utils.sha256Sync = (...messages) => {

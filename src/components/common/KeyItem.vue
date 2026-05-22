@@ -62,7 +62,7 @@ export default {
   }
 }
 
-@media screen and(max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .key-item {
     .key-wrap {
       span {
@@ -72,7 +72,7 @@ export default {
   }
 }
 
-@media screen and(max-width:767px) {
+@media screen and (max-width: 767px) {
   .key-item {
     .key-name {
       font-size: 15px;
