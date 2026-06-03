@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'Billetera Ethereum',
     ethWallet: 'Billetera ETH',
     dappStore: 'Tienda de DApp',
+      safetyTips: 'Consejos de seguridad',
+      safetyTipsDesc: 'Casos reales de estafas y una guía práctica para proteger los activos digitales.',
     darkMode: 'Modo oscuro',
     TPCard: 'TP Card',
     TPCardDesc: 'Una tarjeta bancaria opera de manera descentralizada.',

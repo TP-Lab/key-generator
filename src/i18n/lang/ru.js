@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'Кошелек Ethereum',
     ethWallet: 'ETH кошелек',
     dappStore: 'DApp магазин',
+      safetyTips: 'Советы по безопасности',
+      safetyTipsDesc: 'Реальные случаи мошенничества и практическое руководство по защите цифровых активов.',
     darkMode: 'Темный режим',
     TPCard: 'TP Card',
     TPCardDesc: 'Банковская карта работает в децентрализованной манере.',

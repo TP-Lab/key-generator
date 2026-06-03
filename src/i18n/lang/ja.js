@@ -77,6 +77,8 @@ export default {
       nostrAssetsBatchSenderDesc: 'NostrAssetsのためのバッチトランスファーツール',
       BATCH_SENDER: 'バッチトランスファー',
       BATCH_SENDER_DESC: '複数のアドレスに一度にトークンを転送',
+        safetyTips: '安全対策ガイド',
+        safetyTipsDesc: '実際の詐欺事例とデジタル資産を守るための実践的なガイド。',
       trade: '取引',
       swap: 'TransitSwap',
       swapDesc: 'ベストレートで取引。',

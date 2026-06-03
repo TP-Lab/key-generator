@@ -77,6 +77,8 @@ export default {
       nostrAssetsBatchSenderDesc: 'NostrAssets용 일괄 전송 도구.',
       BATCH_SENDER: '일괄 전송',
       BATCH_SENDER_DESC: '한 번에 여러 수신자에게 토큰 전송.',
+        safetyTips: '안전 수칙',
+        safetyTipsDesc: '실제 사기 사례와 디지털 자산 보호를 위한 실용 가이드.',
       trade: '거래',
       swap: '트랜짓 스왑',
       swapDesc: '최상의 가격으로 스왑',

@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'Ethereum Wallet',
     ethWallet: 'ETH Wallet',
     dappStore: 'DApp Store',
+      safetyTips: 'Mga Tip sa Kaligtasan',
+      safetyTipsDesc: 'Mga Scam at Gabay sa Pag-ingat ng Digital Assets.',
     darkMode: 'Madilim na Mode',
     TPCard: 'TP Card',
     TPCardDesc: 'Isang bank card na gumagana sa isang desentralisadong paraan.',

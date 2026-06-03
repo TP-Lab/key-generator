@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'กระเป๋า Ethereum',
     ethWallet: 'กระเป๋า ETH',
     dappStore: 'ร้านค้า DApp',
+      safetyTips: 'คำแนะนำด้านความปลอดภัย',
+      safetyTipsDesc: 'กรณีหลอกลวงจริงและแนวทางปฏิบัติในการปกป้องสินทรัพย์ดิจิทัล',
     darkMode: 'โหมดมืด',
     TPCard: 'TP Card',
     TPCardDesc: 'บัตรธนาคารที่ดำเนินการแบบกระจายศูนย์.',

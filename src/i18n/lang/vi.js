@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'Ví Ethereum',
     ethWallet: 'Ví ETH',
     dappStore: 'Cửa hàng DApp',
+      safetyTips: 'Mẹo An Toàn',
+      safetyTipsDesc: 'Các vụ lừa đảo có thật và hướng dẫn thực tế để bảo vệ tài sản kỹ thuật số.',
     darkMode: 'Chế độ tối',
     TPCard: 'TP Card',
     TPCardDesc: 'Thẻ ngân hàng hoạt động theo cách phi tập trung.',

@@ -82,6 +82,8 @@ export default createLocale(
     ETHWallet: 'Ethereum वॉलेट',
     ethWallet: 'ETH वॉलेट',
     dappStore: 'डीएप स्टोर',
+      safetyTips: 'सुरक्षा सुझाव',
+      safetyTipsDesc: 'वास्तविक धोखाधड़ी के मामले और डिजिटल संपत्तियों की सुरक्षा के लिए व्यावहारिक मार्गदर्शन।',
     darkMode: 'डार्क मोड',
     TPCard: 'TP Card',
     TPCardDesc: 'एक बैंक कार्ड विकेंद्रीकृत तरीके से संचालित होता है।',
