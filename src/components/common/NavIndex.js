@@ -92,8 +92,6 @@ export default {
           return 'Bahasa Indonesia';
         case 'ms':
           return 'Bahasa Melayu';
-        case 'ur':
-          return 'اردو';
         default:
           return '中文';
       }
@@ -359,7 +357,6 @@ export default {
               link: '/ms',
               class: 'locale-ms',
             },
-            { title: 'اردو', lang: 'ur', link: '/ur', class: 'locale-ur' },
           ],
         },
       ];
@@ -432,7 +429,6 @@ export default {
         '/th',
         '/id',
         '/ms',
-        '/ur',
       ];
       let isWhite = whiteList.indexOf(this.$route.fullPath) !== -1;
 
@@ -563,7 +559,6 @@ export default {
           th: 'ตัวสร้างคีย์ | TokenPocket',
           id: 'Generator Kunci | TokenPocket',
           ms: 'Penjana Kunci | TokenPocket',
-          ur: 'کی جنریٹر | TokenPocket',
         }[lang] || '公私钥生成器 | TokenPocket';
       this.navIndex = '';
       this.menuState = false;

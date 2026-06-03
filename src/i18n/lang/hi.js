@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'अपना NFT और कला जमा करें।',
     subChain: 'चेन जमा करें',
     subChainDesc: 'अपना ब्लॉकचेन सबमिट करें.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'बग बाउंटी',
     tools: 'औजार',
     build: 'निर्माण',
     learn: 'सीखना',

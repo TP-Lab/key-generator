@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'Kirim NFT & karya seni Anda.',
     subChain: 'Kirim Chain',
     subChainDesc: 'Kirim blockchain Anda.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'Hadiah Kerentanan',
     tools: 'Alat',
     build: 'Bangun',
     learn: 'Pelajari',

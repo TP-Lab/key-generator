@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'Gửi NFT và nghệ thuật của bạn.',
     subChain: 'Nộp Chuỗi',
     subChainDesc: 'Gửi blockchain của bạn.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'Tiền thưởng lỗ hổng',
     tools: 'Công cụ',
     build: 'Xây dựng',
     learn: 'Học',

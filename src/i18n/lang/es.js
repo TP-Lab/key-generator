@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'Envía tu NFT y arte.',
     subChain: 'Enviar cadena',
     subChainDesc: 'Envía tu blockchain.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'Recompensa por vulnerabilidades',
     tools: 'Herramientas',
     build: 'Construir',
     learn: 'Aprender',

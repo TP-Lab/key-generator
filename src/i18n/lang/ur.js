@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'اپنا NFT اور فن پارے جمع کریں۔',
     subChain: 'چین جمع کریں',
     subChainDesc: 'اپنا بلاک چین جمع کریں۔',
-    bugBounty: 'بگ باؤنٹی',
+      bugBounty: 'بگ باؤنٹی',
     tools: 'ٹولز',
     build: 'بنائیں',
     learn: 'سیکھیں',

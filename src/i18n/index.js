@@ -13,7 +13,6 @@ import vi from './lang/vi';
 import th from './lang/th';
 import id from './lang/id';
 import ms from './lang/ms';
-import ur from './lang/ur';
 const availableLocale = [
   'zh',
   'zh-tw',
@@ -29,7 +28,6 @@ const availableLocale = [
   'th',
   'id',
   'ms',
-  'ur',
 ];
 
 const titles = {
@@ -47,7 +45,6 @@ const titles = {
   th: 'ตัวสร้างคีย์ | TokenPocket',
   id: 'Generator Kunci | TokenPocket',
   ms: 'Penjana Kunci | TokenPocket',
-  ur: 'کی جنریٹر | TokenPocket',
 };
 
 let defaultLangStr = navigator.language;
@@ -97,7 +94,6 @@ const i18n = createI18n({
     th,
     id,
     ms,
-    ur,
   },
 });
 

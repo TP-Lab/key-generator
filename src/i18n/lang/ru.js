@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'Отправьте ваши NFT и произведения искусства.',
     subChain: 'Отправить цепочку',
     subChainDesc: 'Отправьте вашу блокчейн.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'Вознаграждение за уязвимости',
     tools: 'Инструменты',
     build: 'Разработка',
     learn: 'Учиться',

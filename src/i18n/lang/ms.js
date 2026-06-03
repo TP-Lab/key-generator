@@ -57,7 +57,7 @@ export default createLocale(
     subNFTDesc: 'Hantar NFT & karya seni anda.',
     subChain: 'Hantar Chain',
     subChainDesc: 'Hantar blockchain anda.',
-    bugBounty: 'Bug Bounty',
+    bugBounty: 'Ganjaran Kerentanan',
     tools: 'Alat',
     build: 'Bina',
     learn: 'Belajar',
