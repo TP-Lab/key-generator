@@ -304,7 +304,7 @@ export default {
     position: relative;
     height: 60px;
     line-height: 60px;
-    color: #101010;
+    color: #3a3b3d;
     padding: 0 15px;
     &.active {
       .title {
