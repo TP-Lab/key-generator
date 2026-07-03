@@ -104,7 +104,7 @@ export default {
     display: block;
     position: fixed;
     top: 60px;
-    left: 0;
+    inset-inline-start: 0;
     width: 100vw;
     height: calc(100dvh - 60px); /* 解决移动端底部露白的关键 */
     background: white;

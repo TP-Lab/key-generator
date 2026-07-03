@@ -17,7 +17,7 @@
               <img src="../assets/main/github.png" alt="" />
               <span>Github</span>
             </div>
-            <img class="arrow" src="../assets/arrow.png" alt="" />
+            <img class="arrow rtl-flip" src="../assets/arrow.png" alt="" />
           </a>
         </div>
         <div class="main-right">
@@ -40,7 +40,7 @@
                   <img :src="chainObj[0].icon" alt="" />
                   <span>{{ chainObj[0].name }}</span>
                 </div>
-                <img class="arrow" src="../assets/arrow.png" alt="" />
+                <img class="arrow rtl-flip" src="../assets/arrow.png" alt="" />
               </div>
               <div class="title">{{ chainObj[0].name }} keys</div>
               <div class="warn">{{ $t('main.tips') }}</div>

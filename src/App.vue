@@ -6,6 +6,21 @@
   <router-view />
 </template>
 
+<script>
+import { syncDocumentDirection } from './i18n';
+
+export default {
+  watch: {
+    '$i18n.locale': {
+      handler(locale) {
+        syncDocumentDirection(locale);
+      },
+      immediate: true,
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 html,
 body {

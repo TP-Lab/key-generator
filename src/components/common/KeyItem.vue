@@ -47,6 +47,7 @@ export default {
     span {
       width: 345px;
       word-break: break-all;
+      unicode-bidi: isolate;
       background: #f5f6f7;
       border-radius: 8px;
       padding: 10px 14px;
@@ -55,7 +56,7 @@ export default {
       color: #3a3b3d;
     }
     img {
-      margin-left: 8px;
+      margin-inline-start: 8px;
       width: 20px;
       cursor: pointer;
     }

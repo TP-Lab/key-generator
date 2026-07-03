@@ -1,4 +1,10 @@
 .home {
+  [dir='rtl'] & {
+    .rtl-flip {
+      transform: scaleX(-1);
+    }
+  }
+
   @mixin box-btn {
     margin-top: 16px;
     width: fit-content;
@@ -20,7 +26,7 @@
       }
 
       span {
-        margin-left: 15px;
+        margin-inline-start: 15px;
         font-size: 16px;
         font-weight: 500;
         color: #000000;
@@ -28,7 +34,7 @@
     }
 
     .arrow {
-      margin-left: 185px;
+      margin-inline-start: 185px;
       width: 14px;
     }
   }
@@ -79,9 +85,10 @@
       .main-right {
         display: flex;
         align-items: center;
-        padding: 16px 48px 16px 16px;
+        padding-block: 16px;
+        padding-inline: 16px 48px;
         flex: 1;
-        margin-left: 140px;
+        margin-inline-start: 140px;
         height: 664px;
         background: #ffffff;
         border-radius: 24px;
@@ -121,7 +128,7 @@
             }
 
             span {
-              margin-left: 10px;
+              margin-inline-start: 10px;
               font-size: 14px;
               font-weight: 500;
               color: #ffffff;
@@ -135,7 +142,7 @@
           justify-content: space-between;
           height: inherit;
           flex: 1;
-          margin-left: 50px;
+          margin-inline-start: 50px;
 
           .mobile-chain {
             @include box-btn();
@@ -216,7 +223,7 @@
           width: 100%;
           .github {
             .arrow {
-              margin-left: 260px;
+              margin-inline-start: 260px;
             }
           }
         }
@@ -250,7 +257,7 @@
       }
 
       .arrow {
-        margin-left: 0;
+        margin-inline-start: 0;
         width: 12px;
       }
     }
@@ -301,7 +308,7 @@
           }
 
           .key-content {
-            margin-left: 0;
+            margin-inline-start: 0;
             padding: 0;
             height: auto;
 
@@ -404,7 +411,7 @@
             }
 
             span {
-              margin-left: 5px;
+              margin-inline-start: 5px;
               font-size: 15px;
               font-weight: 500;
               color: #3a3b3d;

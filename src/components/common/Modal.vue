@@ -85,7 +85,7 @@ export default {
     .close {
       position: absolute;
       top: 16px;
-      right: 16px;
+      inset-inline-end: 16px;
       width: 20px;
       height: 20px;
       cursor: pointer;

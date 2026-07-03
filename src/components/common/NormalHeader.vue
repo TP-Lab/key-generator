@@ -163,7 +163,7 @@ export default {
           contain;
       }
       .nav-text {
-        margin-left: 16px;
+        margin-inline-start: 16px;
         font-size: 16px;
         font-weight: 600;
         color: #3a3b3d;
@@ -198,7 +198,7 @@ export default {
     background: rgba(212, 220, 229, 0.6);
     position: absolute;
     z-index: 5;
-    left: 0;
+    inset-inline-start: 0;
     top: 0;
     visibility: hidden;
     opacity: 0;
@@ -227,7 +227,7 @@ export default {
           height: 0;
           width: 100%;
           position: absolute;
-          left: 0;
+          inset-inline-start: 0;
           top: 90px;
           height: auto;
           .nav-child-left {
@@ -238,7 +238,7 @@ export default {
             }
           }
           .nav-child-right {
-            margin-left: 100px;
+            margin-inline-start: 100px;
             display: grid;
             grid-template-columns: 300px 300px;
             gap: 24px 80px;
@@ -246,7 +246,8 @@ export default {
             .nav-children-item {
               cursor: pointer;
               .nav-children-desc {
-                margin: 2px 0 0 36px;
+                margin-block: 2px 0;
+                margin-inline: 36px 0;
                 font-size: 14px;
                 color: #9ea0a5;
                 word-break: break-word;
@@ -255,7 +256,7 @@ export default {
             &.display-type-3 {
               grid-template-columns: 300px 300px 300px;
               gap: 24px 10px;
-              margin-left: 48px;
+              margin-inline-start: 48px;
             }
           }
         }
@@ -291,7 +292,7 @@ export default {
 }
 
 .navbar-tab-list {
-  margin-left: 48px;
+  margin-inline-start: 48px;
   display: flex;
   flex: 1;
 
@@ -320,7 +321,7 @@ export default {
         }
         .nav-title-border-bottom {
           position: absolute;
-          left: 0;
+          inset-inline-start: 0;
           bottom: 0;
           width: 100%;
           height: 2px;
@@ -329,7 +330,7 @@ export default {
       }
     }
     .title-left {
-      margin-right: 4px;
+      margin-inline-end: 4px;
       font-size: 15px;
     }
     .language-content {
@@ -339,12 +340,12 @@ export default {
         width: 24px;
       }
       .language-title {
-        margin-left: 10px;
+        margin-inline-start: 10px;
       }
     }
   }
   .nav-language {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 
   .nav-children-wrap {
@@ -402,7 +403,7 @@ export default {
         display: flex;
         align-items: center;
         img {
-          margin-left: 38px;
+          margin-inline-start: 38px;
           width: 44px;
           height: 44px;
         }
@@ -410,18 +411,18 @@ export default {
           flex: 1;
           display: flex;
           flex-direction: column;
-          margin-left: 24px;
+          margin-inline-start: 24px;
           &.lang {
-            margin-left: 0;
+            margin-inline-start: 0;
           }
           &.leftDis {
-            margin-left: 16px;
+            margin-inline-start: 16px;
           }
           .child-title {
             // padding-right: 20px;
             font-size: 16px;
             font-weight: 400;
-            text-align: left;
+            text-align: start;
             color: #3a3b3d;
             line-height: 20px;
             white-space: nowrap;
@@ -439,7 +440,7 @@ export default {
       }
       .line {
         margin-top: 10px;
-        margin-left: 68px;
+        margin-inline-start: 68px;
         height: 1px;
         background: #eeeeee;
       }
@@ -456,7 +457,7 @@ export default {
   }
 
   .tp-language-dropdown-wrapper {
-    margin-left: auto;
+    margin-inline-start: auto;
     display: flex;
     align-items: center;
   }

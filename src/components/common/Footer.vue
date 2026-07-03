@@ -483,7 +483,7 @@ export default {
       }
     }
     .footer-wrap {
-      margin-left: 131px;
+      margin-inline-start: 131px;
       flex: 1;
       display: flex;
       flex-wrap: wrap;
@@ -550,7 +550,8 @@ export default {
     // height: 32px;
     // flex: 1;
     height: 100%;
-    margin: 0 0 0 10px;
+    margin-block: 0;
+    margin-inline: 10px 0;
     &::-webkit-input-placeholder {
       color: #b1b1b1;
     }
@@ -585,7 +586,7 @@ export default {
 .email-icon-right {
   display: inline-block;
   position: relative;
-  margin-left: 5px;
+  margin-inline-start: 5px;
   width: 6px;
   height: 6px;
 
@@ -621,13 +622,13 @@ export default {
         }
       }
       .footer-wrap {
-        margin-left: 0;
+        margin-inline-start: 0;
         margin-top: 40px;
         .footer-list {
           padding: 0;
           .footer-item {
             .title {
-              text-align: left;
+              text-align: start;
             }
           }
         }
@@ -669,6 +670,7 @@ export default {
       }
       .footer-wrap {
         margin: 0;
+        margin-inline-start: 0;
         margin-top: 32px;
         .footer-list {
           padding: 0;

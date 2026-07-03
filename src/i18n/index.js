@@ -13,6 +13,7 @@ import vi from './lang/vi';
 import th from './lang/th';
 import id from './lang/id';
 import ms from './lang/ms';
+import ur from './lang/ur';
 const availableLocale = [
   'zh',
   'zh-tw',
@@ -28,7 +29,10 @@ const availableLocale = [
   'th',
   'id',
   'ms',
+  'ur',
 ];
+
+const RTL_LOCALES = ['ur'];
 
 const titles = {
   en: 'Key Generator | TokenPocket',
@@ -45,36 +49,51 @@ const titles = {
   th: 'ตัวสร้างคีย์ | TokenPocket',
   id: 'Generator Kunci | TokenPocket',
   ms: 'Penjana Kunci | TokenPocket',
+  ur: 'کی جنریٹر | TokenPocket',
 };
 
 let defaultLangStr = navigator.language;
 let defaultLang = 'zh';
 
-if (defaultLangStr.indexOf('en') >= 0) {
-  defaultLang = 'en';
-} else if (
-  defaultLangStr.toLowerCase().includes('zh-tw') ||
-  defaultLangStr.toLowerCase().includes('zh-hk') ||
-  defaultLangStr.toLowerCase().includes('zh-hant')
-) {
-  defaultLang = 'zh-tw';
-} else {
-  const matchedLocale = availableLocale.find((item) =>
-    defaultLangStr.toLowerCase().includes(item)
+function normalizeLocale(locale) {
+  if (!locale) return '';
+
+  const normalized = locale.toLowerCase();
+
+  if (
+    normalized.includes('zh-tw') ||
+    normalized.includes('zh-hk') ||
+    normalized.includes('zh-hant')
+  ) {
+    return 'zh-tw';
+  }
+
+  return (
+    availableLocale.find(
+      (item) => normalized === item || normalized.startsWith(`${item}-`)
+    ) || ''
   );
-  defaultLang = matchedLocale || defaultLang;
 }
+
+export function syncDocumentDirection(locale) {
+  const currentLocale = normalizeLocale(locale) || 'zh';
+  const isRtl = RTL_LOCALES.includes(currentLocale);
+
+  document.documentElement.lang = currentLocale;
+  document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+}
+
+defaultLang = normalizeLocale(defaultLangStr) || defaultLang;
 
 const queryObj = Object.fromEntries(new URLSearchParams(location.search));
 
-let locale = availableLocale.includes(queryObj.locale)
-  ? queryObj.locale
-  : defaultLang;
+let locale = normalizeLocale(queryObj.locale) || defaultLang;
 const storedLocale = localStorage.getItem('locale');
 
-locale = availableLocale.includes(storedLocale) ? storedLocale : locale;
+locale = normalizeLocale(storedLocale) || locale;
 
 document.title = titles[locale] || titles.zh;
+syncDocumentDirection(locale);
 
 const i18n = createI18n({
   legacy: false,
@@ -94,6 +113,7 @@ const i18n = createI18n({
     th,
     id,
     ms,
+    ur,
   },
 });
 
