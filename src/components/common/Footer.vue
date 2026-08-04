@@ -295,12 +295,12 @@ export default {
                   ? 'https://github.tokenpocket.pro/BlockchainGuide-TRON/#/'
                   : 'https://github.tokenpocket.pro/BlockchainGuide-TRON-EN/#/'
               },
-              {
-                title: this.$t('COMMON.LAYOUT.iostWallet'),
-                url: this.isZH
-                  ? 'https://github.tokenpocket.pro/BlockchainGuide-IOST/#/'
-                  : 'https://github.tokenpocket.pro/BlockchainGuide-IOST-EN/#/'
-              },
+              // {
+              //   title: this.$t('COMMON.LAYOUT.iostWallet'),
+              //   url: this.isZH
+              //     ? 'https://github.tokenpocket.pro/BlockchainGuide-IOST/#/'
+              //     : 'https://github.tokenpocket.pro/BlockchainGuide-IOST-EN/#/'
+              // },
             ]
           },
           {
