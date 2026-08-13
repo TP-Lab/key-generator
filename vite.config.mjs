@@ -86,6 +86,8 @@ function manualChunks(id) {
       return group.name;
     }
   }
+
+  return 'vendor';
 }
 
 export default defineConfig(({ mode }) => {
@@ -122,7 +124,7 @@ export default defineConfig(({ mode }) => {
       global: 'globalThis',
     },
     server: {
-      host: '0.0.0.0',
+      host: true,
       port: 12306,
       open: base,
     },
@@ -132,9 +134,23 @@ export default defineConfig(({ mode }) => {
       open: base,
     },
     build: {
+      cssTarget: ['ios14.5', 'safari14.1'],
+      assetsInlineLimit: 4096,
+      cssCodeSplit: true,
       rolldownOptions: {
         output: {
+          entryFileNames: 'js/[name]-[hash].js',
+          chunkFileNames: 'js/[name]-[hash].js',
           manualChunks,
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.names?.[0] || assetInfo.name || '';
+
+            if (name.endsWith('.css')) {
+              return 'css/[name]-[hash][extname]';
+            }
+
+            return 'img/[name]-[hash][extname]';
+          },
         },
       },
     },
